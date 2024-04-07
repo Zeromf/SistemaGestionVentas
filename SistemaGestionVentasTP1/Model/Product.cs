@@ -18,7 +18,7 @@ namespace SistemaGestionVentasTP1.Model
         public decimal Price { get; set; }
         public int CategoryId { get; set; }
         public int Discount { get; set; }
-        public string Url { get; set; }
+        public string ImageUrl { get; set; }
         public Category Category { get; set; }
         public IList<SaleProduct> product { get; set; }
 
