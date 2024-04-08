@@ -13,11 +13,10 @@ namespace SistemaGestionVentas.Entity
     {
         public void Configure(EntityTypeBuilder<Category> entityBuilder)
         {
-            entityBuilder.HasKey(x => x.CategoryId);
+            entityBuilder.HasKey(c => c.CategoryId);
 
-            entityBuilder.Property(x => x.Name)
-                .IsRequired()
-                .HasMaxLength(200);
+            entityBuilder.Property(c => c.Name).IsRequired().HasMaxLength(200);
+            entityBuilder.HasMany(c => c.Products).WithOne(p=>p.Category);
 
         }
-}    }
+    }    }
