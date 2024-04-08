@@ -28,7 +28,7 @@ namespace SistemaGestionVentas.Contexto
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // Verificar si ya se configuraron las opciones del DbContext
+            // Verifica si ya se configuraron las opciones del DbContext
             if (!optionsBuilder.IsConfigured)
             {
                 // Configurar las opciones del DbContext utilizando una cadena de conexión
@@ -38,13 +38,10 @@ namespace SistemaGestionVentas.Contexto
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Category>(entity =>
-            { 
-                entity.ToTable("Category");
-                entity.HasKey(x => x.CategoryId);
-                entity.Property(x => x.Name)
-                .HasMaxLength(200);
-            });
+            modelBuilder.ApplyConfiguration(new CategoryConfig());
+            modelBuilder.ApplyConfiguration(new ProductoConfig());
+            modelBuilder.ApplyConfiguration(new SaleConfig());
+            modelBuilder.ApplyConfiguration(new SaleProductConfig());
 
             modelBuilder.ApplyConfiguration(new CategoryConfigurationDefault());
             modelBuilder.ApplyConfiguration(new ProductsConfigurationDefault());

@@ -11,13 +11,10 @@ namespace SistemaGestionVentasTP1
 {
     class Program
     {
-      
         private static MenuPrincipal menuPrincipal = new MenuPrincipal();
-
         static void Main(string[] args)
         {
             menuPrincipal.ImprimirMenu();
-
         }
     }
 }

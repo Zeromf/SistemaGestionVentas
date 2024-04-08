@@ -25,7 +25,9 @@ namespace SistemaGestionVentas.Menu
              Console.WriteLine("Productos disponibles:");
             for (int i = 0; i < productList.Count; i++)
             {
+                //Lista de todos los productos
                 Product product = productList[i];
+                //Compara la categoria id con la del producto ,si coincido lo trae
                 Category category = categoryList.FirstOrDefault(c => c.CategoryId == product.CategoryId);
                 // Verificar si se encontró la categoría
                 if (category != null)
@@ -37,7 +39,7 @@ namespace SistemaGestionVentas.Menu
                     Console.WriteLine($"Nombre: {product.Name}");
                     Console.WriteLine($"Descripción: {product.Descripcion}");
                     Console.WriteLine($"Precio: {product.Price:C}");
-                    Console.WriteLine($"Descuento: {product.Discount}");
+                    Console.WriteLine($"Descuento: {product.Discount} %");
                     Console.WriteLine($"Categoría: {category?.Name}");
                     Console.WriteLine("***********************************************************************************************************************");
                 }
