@@ -10,12 +10,12 @@ namespace SistemaGestionVentas.Service
 {
     class CategoryService: ICategoryService
     {
-        private readonly ContextDB _contextoDB = new ContextDB();
+        private readonly IContextDB _contextoDB;
 
         public CategoryService()
         {
         }
-        public CategoryService(ContextDB contextoDB)
+        public CategoryService(IContextDB contextoDB)
         {
             _contextoDB = contextoDB;
         }

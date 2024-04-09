@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace SistemaGestionVentas.Contexto
 {
-    public class ContextDB : DbContext
+    public class ContextDB : DbContext, IContextDB
 
     {
         public DbSet<Category> Categories { get; set; }
@@ -23,8 +23,6 @@ namespace SistemaGestionVentas.Contexto
         public ContextDB()
         {
         }
-
-
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

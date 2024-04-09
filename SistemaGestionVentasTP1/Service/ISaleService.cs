@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SistemaGestionVentasTP1.Service
 {
-    interface ISaleService
+    public interface ISaleService
     {
         void RegisterSale(IList<Product> ProductL,Sale sale, List<Product> productosSeleccionados);
 

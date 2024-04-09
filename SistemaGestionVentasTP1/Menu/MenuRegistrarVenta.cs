@@ -1,4 +1,5 @@
-﻿using SistemaGestionVentas.Service;
+﻿using SistemaGestionVentas.Contexto;
+using SistemaGestionVentas.Service;
 using SistemaGestionVentasTP1.Model;
 using SistemaGestionVentasTP1.Service;
 using System;
@@ -9,16 +10,23 @@ using System.Threading.Tasks;
 
 namespace SistemaGestionVentas.Menu
 {
-    class MenuRegistrarVenta
+    public class MenuRegistrarVenta
     {
-        private static IProductService _productService = new ProductService();
-        private static ISaleService _saleService = new SaleService();
-        private static ICategoryService _categoriaService = new CategoryService();
+        private readonly IProductService _productService;
+        private readonly ISaleService _saleService;
+        private static IList<Product> productList;
+        private readonly IContextDB _contextDB;
         private static Sale sale = new Sale();
-        private static IList<Product> productList = _productService.GetAllProducts();
 
-        public static void RealizarVenta()
+        public MenuRegistrarVenta(IContextDB contextDB, IProductService productService, ISaleService saleService) {
+            _contextDB = contextDB;
+            _productService = productService;
+            _saleService = saleService;
+        }
+
+        public void RealizarVenta()
         {
+            productList = _productService.GetAllProducts();
             List<Product> productosSeleccionados = new List<Product>();
 
             while (true)
@@ -110,7 +118,7 @@ namespace SistemaGestionVentas.Menu
             }
         }
 
-        private static void RegistrarVenta(List<Product> productosSeleccionados)
+        private void RegistrarVenta(List<Product> productosSeleccionados)
         {
             try
             {

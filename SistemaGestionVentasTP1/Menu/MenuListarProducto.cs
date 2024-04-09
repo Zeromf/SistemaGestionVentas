@@ -11,18 +11,27 @@ namespace SistemaGestionVentas.Menu
 {
     public class MenuListarProducto
     {
-        private static IProductService _productService = new ProductService();
-        private static ICategoryService _categoriaService = new CategoryService();
+        private readonly IProductService _productService;
+        private readonly ICategoryService _categoriaService;
+        public MenuListarProducto(IProductService productService, ICategoryService categoryService)
+        {
+            _productService = productService;
+            _categoriaService = categoryService;
+        }
+        public MenuListarProducto()
+        {
+ 
+        }
+
+        public void ListarProductos()
+        {
 
         //Traigo la lista de productos
-        private static IList<Product> productList = _productService.GetAllProducts();
+        IList<Product> productList = _productService.GetAllProducts();
         //Traigo la lista de Categorias
-        private static IList<Category> categoryList = _categoriaService.GetAllCategories();
-       
-        public static void ListarProductos()
-        {
-            
-             Console.WriteLine("Productos disponibles:");
+        IList<Category> categoryList = _categoriaService.GetAllCategories();
+
+        Console.WriteLine("Productos disponibles:");
             for (int i = 0; i < productList.Count; i++)
             {
                 //Lista de todos los productos

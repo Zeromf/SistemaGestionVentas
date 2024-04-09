@@ -1,4 +1,6 @@
 ﻿using SistemaGestionVentas.Contexto;
+using SistemaGestionVentas.Service;
+using SistemaGestionVentasTP1.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +11,23 @@ namespace SistemaGestionVentas.Menu
 {
     class MenuPrincipal
     {
+        private readonly IProductService _productService;
+        private readonly ICategoryService _categoriaService;
+        private readonly ISaleService _saleService;
+        private readonly IContextDB _contextDB;
+        public MenuPrincipal(IProductService productService, ICategoryService categoryService, IContextDB contextDB, ISaleService saleService)
+        {
+            _productService = productService;
+            _categoriaService = categoryService;
+            _contextDB =contextDB;
+            _saleService = saleService;
+        }
 
         public void ImprimirMenu() {
-            ContextDB context = new ContextDB();
-            
+            MenuListarProducto menuListarProducto = new MenuListarProducto(_productService, _categoriaService);
+            MenuRegistrarVenta menuRegistrarVenta = new MenuRegistrarVenta(_contextDB, _productService, _saleService);
             //creates db if not exists 
+            ContextDB context = new ContextDB();
             context.Database.EnsureCreated();
 
             bool exit = false;
@@ -31,10 +45,10 @@ namespace SistemaGestionVentas.Menu
                 switch (choice)
                 {
                     case "1":
-                        MenuListarProducto.ListarProductos();
+                        menuListarProducto.ListarProductos();
                         break;
                     case "2":
-                        MenuRegistrarVenta.RealizarVenta();
+                        menuRegistrarVenta.RealizarVenta();
                         break;
                     case "3":
                         exit = true;

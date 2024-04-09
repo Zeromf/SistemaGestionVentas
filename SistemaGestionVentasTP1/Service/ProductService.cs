@@ -11,12 +11,12 @@ namespace SistemaGestionVentas.Service
 {
     class ProductService : IProductService
     {
-        private readonly ContextDB _contextoDB = new ContextDB();
+        private readonly IContextDB _contextoDB;
 
         public ProductService()
         {
         }
-        public ProductService(ContextDB contextoDB)
+        public ProductService(IContextDB contextoDB)
         {
             _contextoDB = contextoDB;
         }

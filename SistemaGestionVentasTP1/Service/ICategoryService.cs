@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SistemaGestionVentas.Service
 {
-    interface ICategoryService
+    public interface ICategoryService
     {
         void AddCategory(Category Product);
         List<Category> GetAllCategories();
