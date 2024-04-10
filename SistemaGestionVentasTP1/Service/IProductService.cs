@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SistemaGestionVentasTP1.Service
 {
-    interface IProductService
+    public interface IProductService
     {
         void AddProduct(Product Product);
         List<Product> GetAllProducts();

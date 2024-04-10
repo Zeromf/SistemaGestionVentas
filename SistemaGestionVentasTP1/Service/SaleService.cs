@@ -10,16 +10,16 @@ using System.Threading.Tasks;
 
 namespace SistemaGestionVentas.Service
 {
-    class SaleService : ISaleService
+    public class SaleService : ISaleService
     {
-        private readonly ContextDB _contextoDB = new ContextDB();
+        private readonly IContextDB _contextoDB;
 
         private ISaleCalculatorService _saleCalculatorService = new SaleCalculatorService();
 
         public SaleService()
         {
         }
-        public SaleService(ContextDB contextoDB)
+        public SaleService(IContextDB contextoDB)
         {
             _contextoDB = contextoDB;
         }

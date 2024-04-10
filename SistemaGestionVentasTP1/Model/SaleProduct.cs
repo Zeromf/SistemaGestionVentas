@@ -18,6 +18,7 @@ namespace SistemaGestionVentasTP1.Model
         public int Quantity { get; set; }
         public decimal Price { get; set; }
         public decimal Discount { get; set; }
+        public virtual Sale Sale { set; get; }
 
     }
 }
