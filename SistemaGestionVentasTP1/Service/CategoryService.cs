@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SistemaGestionVentas.Service
 {
-    class CategoryService: ICategoryService
+    public class CategoryService: ICategoryService
     {
         private readonly IContextDB _contextoDB;
 

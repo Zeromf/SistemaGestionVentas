@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SistemaGestionVentas.Contexto;
-using SistemaGestionVentas.Menu;
+using View.Menu;
 using SistemaGestionVentas.Service;
 using SistemaGestionVentasTP1.Model;
 using SistemaGestionVentasTP1.Service;

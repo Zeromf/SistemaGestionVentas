@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SistemaGestionVentas.Menu
+namespace View.Menu
 {
     public class MenuListarProducto
     {
