@@ -34,27 +34,33 @@ namespace SistemaGestionVentas.Menu
 
             while (!exit)
             {
-                Console.WriteLine("Seleccione una opción:");
-                Console.WriteLine("1. Listar productos");
-                Console.WriteLine("2. Realizar una venta");
-                Console.WriteLine("3. Salir");
+                Console.WriteLine("╔════════════════════════════════╗");
+                Console.WriteLine("║        MENÚ PRINCIPAL           ║");
+                Console.WriteLine("╠════════════════════════════════╣");
+                Console.WriteLine("║ 1. Listar productos             ║");
+                Console.WriteLine("║ 2. Realizar una venta           ║");
+                Console.WriteLine("║ 3. Salir                        ║");
+                Console.WriteLine("╚════════════════════════════════╝");
 
-                Console.Write("Opción: ");
+                Console.Write("Ingrese su opción: ");
                 string choice = Console.ReadLine();
 
                 switch (choice)
                 {
                     case "1":
+                        Console.Clear();
                         menuListarProducto.ListarProductos();
                         break;
                     case "2":
                         menuRegistrarVenta.RealizarVenta();
                         break;
                     case "3":
+                        Console.WriteLine("Gracias por utilizar nuestro sistema. ¡Hasta luego!");
                         exit = true;
                         break;
                     default:
-                        Console.WriteLine("Opción no válida. Inténtalo de nuevo.");
+                        Console.Clear();
+                        Console.WriteLine("Opción no válida. Por favor, seleccione una opción válida.");
                         break;
                 }
             }
