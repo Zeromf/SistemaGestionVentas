@@ -2,13 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <ApplicationIcon />
-    <OutputType>Exe</OutputType>
-    <StartupObject />
+    <AssemblyName>Aplicacion</AssemblyName>
+    <RootNamespace>Aplicacion</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AccesoBD\Aplicacion.csproj" />
     <ProjectReference Include="..\SistemaGestionVentasTP1\Data.csproj" />
   </ItemGroup>
 

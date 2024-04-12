@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.34601.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "SistemaGestionVentasTP1\Data.csproj", "{B9EFA2A2-9546-4AC2-9145-FCB085B89829}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoBD", "AccesoBD\AccesoBD.csproj", "{E016BC3F-A0B1-4E0F-8D4F-76E7EE5DB4DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aplicacion", "AccesoBD\Aplicacion.csproj", "{E016BC3F-A0B1-4E0F-8D4F-76E7EE5DB4DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "View\View.csproj", "{80A9B004-9B8D-4931-AC06-AB2BDBBDDEB3}"
 EndProject
