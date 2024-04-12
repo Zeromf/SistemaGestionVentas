@@ -15,7 +15,6 @@ namespace View.Menu
         private readonly ICategoryService _categoriaService;
         private readonly ISaleService _saleService;
         private readonly IContextDB _contextDB;
-        private readonly ISaleCalculatorService _saleCalculatorService;
 
         public MenuPrincipal(IProductService productService, ICategoryService categoryService, IContextDB contextDB, ISaleService saleService, ISaleCalculatorService saleCalculatorService)
         {
@@ -23,7 +22,6 @@ namespace View.Menu
             _categoriaService = categoryService;
             _contextDB =contextDB;
             _saleService = saleService;
-            _saleCalculatorService = saleCalculatorService;
         }
 
         public void ImprimirMenu() {
