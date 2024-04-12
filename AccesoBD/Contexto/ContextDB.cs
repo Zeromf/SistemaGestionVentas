@@ -46,6 +46,10 @@ namespace SistemaGestionVentas.Contexto
 
         }
 
+        public bool EnsuredCreated()
+        {
+            return this.Database.EnsureCreated();
+        }
     }
 
 }

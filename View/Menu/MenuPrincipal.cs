@@ -15,21 +15,23 @@ namespace View.Menu
         private readonly ICategoryService _categoriaService;
         private readonly ISaleService _saleService;
         private readonly IContextDB _contextDB;
-        public MenuPrincipal(IProductService productService, ICategoryService categoryService, IContextDB contextDB, ISaleService saleService)
+        private readonly ISaleCalculatorService _saleCalculatorService;
+
+        public MenuPrincipal(IProductService productService, ICategoryService categoryService, IContextDB contextDB, ISaleService saleService, ISaleCalculatorService saleCalculatorService)
         {
             _productService = productService;
             _categoriaService = categoryService;
             _contextDB =contextDB;
             _saleService = saleService;
+            _saleCalculatorService = saleCalculatorService;
         }
 
         public void ImprimirMenu() {
+            
+            _contextDB.EnsuredCreated();
+
             MenuListarProducto menuListarProducto = new MenuListarProducto(_productService, _categoriaService);
             MenuRegistrarVenta menuRegistrarVenta = new MenuRegistrarVenta(_contextDB, _productService, _saleService);
-            //creates db if not exists 
-            ContextDB context = new ContextDB();
-            context.Database.EnsureCreated();
-
             bool exit = false;
 
             while (!exit)

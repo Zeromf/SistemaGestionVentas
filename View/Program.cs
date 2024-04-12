@@ -15,6 +15,7 @@ namespace SistemaGestionVentasTP1
         static void Main(string[] args)
         {
             var serviceProvider = new ServiceCollection()
+                .AddScoped<ISaleCalculatorService, SaleCalculatorService>()
                 .AddScoped<MenuPrincipal>()
                 .AddScoped<MenuListarProducto>()
                 .AddScoped<MenuRegistrarVenta>()
