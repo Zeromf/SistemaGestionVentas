@@ -13,17 +13,14 @@ namespace SistemaGestionVentas.Service
     public class SaleService : ISaleService
     {
         private readonly IContextDB _contextoDB;
+        private readonly ISaleCalculatorService _saleCalculatorService;
 
-        private ISaleCalculatorService _saleCalculatorService = new SaleCalculatorService();
-
-        public SaleService()
+        public SaleService(ISaleCalculatorService saleCalculatorService, IContextDB contextoDB)
         {
-        }
-        public SaleService(IContextDB contextoDB)
-        {
+            _saleCalculatorService = saleCalculatorService;
             _contextoDB = contextoDB;
-        }
 
+        }
 
         public void RegisterSale(IList<Product> Products, Sale sale, List<Product> productosSeleccionados)
         {

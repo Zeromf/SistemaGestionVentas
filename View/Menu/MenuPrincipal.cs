@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SistemaGestionVentas.Menu
+namespace View.Menu
 {
     class MenuPrincipal
     {
@@ -15,7 +15,8 @@ namespace SistemaGestionVentas.Menu
         private readonly ICategoryService _categoriaService;
         private readonly ISaleService _saleService;
         private readonly IContextDB _contextDB;
-        public MenuPrincipal(IProductService productService, ICategoryService categoryService, IContextDB contextDB, ISaleService saleService)
+
+        public MenuPrincipal(IProductService productService, ICategoryService categoryService, IContextDB contextDB, ISaleService saleService, ISaleCalculatorService saleCalculatorService)
         {
             _productService = productService;
             _categoriaService = categoryService;
@@ -24,12 +25,11 @@ namespace SistemaGestionVentas.Menu
         }
 
         public void ImprimirMenu() {
-            MenuListarProducto menuListarProducto = new MenuListarProducto(_productService, _categoriaService);
-            MenuRegistrarVenta menuRegistrarVenta = new MenuRegistrarVenta(_contextDB, _productService, _saleService);
-            //creates db if not exists 
-            ContextDB context = new ContextDB();
-            context.Database.EnsureCreated();
+            
+            _contextDB.EnsuredCreated();
 
+            MenuListarProducto menuListarProducto = new MenuListarProducto(_productService, _categoriaService);
+            MenuRegistrarVenta menuRegistrarVenta = new MenuRegistrarVenta(_contextDB, _productService, _saleService,_categoriaService);
             bool exit = false;
 
             while (!exit)
@@ -52,7 +52,7 @@ namespace SistemaGestionVentas.Menu
                         menuListarProducto.ListarProductos();
                         break;
                     case "2":
-                        menuRegistrarVenta.RealizarVenta();
+                        menuRegistrarVenta.CalcularVenta();
                         break;
                     case "3":
                         Console.WriteLine("Gracias por utilizar nuestro sistema. ¡Hasta luego!");

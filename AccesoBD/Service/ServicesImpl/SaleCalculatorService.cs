@@ -11,7 +11,8 @@ namespace SistemaGestionVentas.Service
 
     public class SaleCalculatorService : ISaleCalculatorService
     {
-        public (decimal subtotal, decimal totalDiscount, decimal totalPay) CalculateSaleDetails(IList<Product> products)
+        public (decimal subtotal, decimal totalDiscount, decimal totalPay) 
+            CalculateSaleDetails(IList<Product> products)
         {
 
             // Calcular subtotal, descuento total y total de la venta basado en productos seleccionados

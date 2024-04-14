@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>Aplicacion</AssemblyName>
+    <RootNamespace>Aplicacion</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SistemaGestionVentasTP1\Data.csproj" />
+  </ItemGroup>
+
+</Project>

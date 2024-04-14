@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SistemaGestionVentas.Service
 {
-    class ProductService : IProductService
+    public class ProductService : IProductService
     {
         private readonly IContextDB _contextoDB;
 

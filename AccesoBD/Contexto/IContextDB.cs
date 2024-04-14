@@ -15,5 +15,7 @@ namespace SistemaGestionVentas.Contexto
         DbSet<Sale> Sales { get; set; }
         DbSet<SaleProduct> SaleProducts { get; set; }
         int SaveChanges();
+
+        bool EnsuredCreated();
     }
 }
