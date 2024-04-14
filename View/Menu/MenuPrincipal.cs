@@ -29,7 +29,7 @@ namespace View.Menu
             _contextDB.EnsuredCreated();
 
             MenuListarProducto menuListarProducto = new MenuListarProducto(_productService, _categoriaService);
-            MenuRegistrarVenta menuRegistrarVenta = new MenuRegistrarVenta(_contextDB, _productService, _saleService);
+            MenuRegistrarVenta menuRegistrarVenta = new MenuRegistrarVenta(_contextDB, _productService, _saleService,_categoriaService);
             bool exit = false;
 
             while (!exit)
@@ -52,7 +52,7 @@ namespace View.Menu
                         menuListarProducto.ListarProductos();
                         break;
                     case "2":
-                        menuRegistrarVenta.RealizarVenta();
+                        menuRegistrarVenta.CalcularVenta();
                         break;
                     case "3":
                         Console.WriteLine("Gracias por utilizar nuestro sistema. ¡Hasta luego!");

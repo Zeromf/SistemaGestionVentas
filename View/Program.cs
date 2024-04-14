@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using SistemaGestionVentas.Contexto;
 using View.Menu;
 using SistemaGestionVentas.Service;
 using SistemaGestionVentasTP1.Model;
@@ -7,6 +6,7 @@ using SistemaGestionVentasTP1.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using SistemaGestionVentas.Contexto;
 
 namespace SistemaGestionVentasTP1
 {
