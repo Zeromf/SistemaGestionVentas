@@ -9,5 +9,6 @@ namespace SistemaGestionVentas.Const
     {
         public const decimal Taxes = 1.21m;
     
+    
     }
 }
