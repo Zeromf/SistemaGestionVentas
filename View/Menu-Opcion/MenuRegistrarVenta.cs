@@ -21,7 +21,8 @@ namespace View.Menu
         private static Sale sale = new Sale();
         private readonly ICategoryService _categoryService;
 
-        public MenuRegistrarVenta(IContextDB contextDB, IProductService productService, ISaleService saleService, ICategoryService categoryService) {
+        public MenuRegistrarVenta(IContextDB contextDB, IProductService productService, ISaleService saleService, ICategoryService categoryService)
+        {
             _contextDB = contextDB;
             _productService = productService;
             _saleService = saleService;
@@ -182,16 +183,31 @@ namespace View.Menu
         {
             try
             {
-              _saleService.RegisterSale(productList, sale, productosSeleccionados);
-              Console.WriteLine("La venta ha sido registrada correctamente.");
+                // Calcular subtotal
+                decimal subtotal = productosSeleccionados.Sum(p => p.Price);
+
+                // Calcular descuento
+                decimal descuento = productosSeleccionados.Sum(p => p.Price * p.Discount / 100);
+
+                // Calcular importe total
+                decimal importeTotal = subtotal - descuento;
+
+                _saleService.RegisterSale(productList, sale, productosSeleccionados);
+                Console.WriteLine("La venta ha sido registrada correctamente.");
+
+                // Mostrar importe total, subtotal y descuento
+                Console.WriteLine($"Subtotal: {subtotal:C}");
+                Console.WriteLine($"Descuento: {descuento:C}");
+                Console.WriteLine($"Importe Total: {importeTotal:C}");
+
+               
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Ha ocurrido un error al intentar registrar la venta: " + ex.Message);
             }
 
+
         }
-
-
     }
 }

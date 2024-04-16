@@ -27,7 +27,6 @@ namespace SistemaGestionVentas.Service
             // Utilizamos el servicio de cálculo de venta para obtener los detalles de la venta
             var saleDetails = _saleCalculatorService.CalculateSaleDetails(productosSeleccionados);
 
-
             //Calcular venta
             var newSale = new Sale
             {
@@ -40,24 +39,36 @@ namespace SistemaGestionVentas.Service
 
             newSale.SaleProducts = new List<SaleProduct>();
 
-            foreach (var product in productosSeleccionados)
+            foreach (var singleProduct in productosSeleccionados)
             {
-                var saleProduct = new SaleProduct
-                {
-                    ProductId = product.ProductId,
-                    Quantity = 1, // cantidad producto
-                    Price = product.Price,
-                    Discount = product.Discount
-                };
+                var product = Products.FirstOrDefault(p => p.ProductId == singleProduct.ProductId);
 
-                newSale.SaleProducts.Add(saleProduct);
+                if (product != null)
+                {
+                    var existingProduct = newSale.SaleProducts.FirstOrDefault(sp => sp.ProductId == product.ProductId);
+
+                    if (existingProduct != null)
+                    {
+                        existingProduct.Quantity++;
+                    }
+                    else
+                    {
+                        var saleProduct = new SaleProduct
+                        {
+                            ProductId = product.ProductId,
+                            Quantity = 1, // cantidad producto empieza en 1 por defecto     
+                            Price = product.Price,
+                            Discount = product.Discount
+                        };
+
+                        newSale.SaleProducts.Add(saleProduct);
+                    }
+                }
             }
 
             _contextoDB.Sales.Add(newSale);
             _contextoDB.SaveChanges();
-
-
-
         }
     }
 }
+
