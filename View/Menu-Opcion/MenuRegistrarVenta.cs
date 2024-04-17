@@ -185,20 +185,8 @@ namespace View.Menu
         {
             try
             {
-
-                decimal subtotal = productosSeleccionados.Sum(p => p.Price);
-
-                decimal descuento = productosSeleccionados.Sum(p => p.Price * p.Discount / 100);
-
-                decimal importeTotal = (subtotal - descuento) * Constantes.Taxes;
-
                 _saleService.RegisterSale(productList, sale, productosSeleccionados);
                 Console.WriteLine("La venta ha sido registrada correctamente.");
-
-                // Mostrar importe total, subtotal y descuento
-                Console.WriteLine($"Subtotal: {subtotal:C}");
-                Console.WriteLine($"Descuento: {descuento:C}");
-                Console.WriteLine($"Importe Total: {importeTotal:C}");
                
             }
             catch (Exception ex)

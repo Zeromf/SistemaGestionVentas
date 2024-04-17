@@ -20,8 +20,15 @@ namespace SistemaGestionVentas.Service
             decimal totalDiscount = CalculateTotalDiscount(products);
             decimal taxes = Constantes.Taxes;
             decimal totalPay = (subtotal - totalDiscount) * taxes;
+            
+            // Mostrar importe total, subtotal y descuento
+            Console.WriteLine($"Subtotal: {subtotal:C}");
+            Console.WriteLine($"Descuento: {totalDiscount:C}");
+            Console.WriteLine($"Importe Total: {totalPay:C}");
 
             return (subtotal, totalDiscount, totalPay);
+
+ 
         }
 
         private decimal CalculateSubtotal(IList<Product> products)
