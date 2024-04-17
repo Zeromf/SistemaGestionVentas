@@ -20,13 +20,16 @@ namespace SistemaGestionVentas.Service
             if (response.ToLower() == "si")
             {
                 // Mostrar detalle de los productos
+                int contador = 1; 
                 foreach (var product in products)
                 {
-                    Console.WriteLine($"Producto: {product.Name}");
+                    Console.WriteLine($"Producto{contador}: {product.Name}");
                     Console.WriteLine($"Precio: {product.Price:C}");
-                    Console.WriteLine($"Descuento:({product.Discount:F2}%)");
+                    Console.WriteLine($"Descuento: ({product.Discount:F2}%)");
 
                     Console.WriteLine("-----------------------------");
+
+                    contador++;
                 }
             }
             else
