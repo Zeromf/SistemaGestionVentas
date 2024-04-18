@@ -54,7 +54,7 @@ namespace View.Menu
             }
 
             Console.WriteLine("***********************************************************************************************************************");
-            Console.WriteLine("Seleccione el número de la categoría para ver los productos, o escriba 'fin' para terminar.");
+            Console.WriteLine("Seleccione el número de la categoría para ver los productos, o escriba 'fin' para volver al menu principal.");
             Console.WriteLine("***********************************************************************************************************************");
             Console.Write("Opción: ");
 
@@ -88,9 +88,8 @@ namespace View.Menu
             while (true)
             {
                 Console.WriteLine("***********************************************************************************************************************");
-                Console.WriteLine("Seleccione el número del producto que desea comprar, o escriba 'fin' para terminar.");
-                Console.WriteLine("También puede buscar productos por nombre escribiendo el nombre del producto:");
-                Console.WriteLine("Si desea cancelar la selección del último producto, escriba 'cancelar'.");
+                Console.WriteLine("Seleccione el número del producto o 'fin' para comprar. " +
+                    "Busque por nombre o '0' para volver, 'cancel' para eliminar último producto.");
                 Console.WriteLine("***********************************************************************************************************************");
                 Console.Write("Opción o nombre del producto: ");
 
@@ -107,8 +106,15 @@ namespace View.Menu
                     break;
                 }
 
+                if (input == "0")
+                {
+                    Console.Clear();
+                    CalcularVenta();
+                    return;
+                }
+
                 //Cancela el producto
-                if (input.ToLower() == "cancelar" && productosSeleccionados.Any())
+                if (input.ToLower() == "cancel" && productosSeleccionados.Any())
                 {
                     var lastSelectedProduct = productosSeleccionados.Last();
                     productosSeleccionados.Remove(lastSelectedProduct);

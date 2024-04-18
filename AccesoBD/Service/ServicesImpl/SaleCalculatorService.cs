@@ -14,6 +14,7 @@ namespace SistemaGestionVentas.Service
         public (decimal subtotal, decimal totalDiscount, decimal totalPay)
             CalculateSaleDetails(IList<Product> products)
         {
+            Console.Clear();
             Console.WriteLine("¿Desea ver el detalle de los productos? (Si/No)");
             string response = Console.ReadLine();
 
