@@ -24,14 +24,14 @@ namespace SistemaGestionVentas.Service
 
         public void AddProduct(Product Product)
         {
-            _contextoDB.Products.Add(Product);
+            _contextoDB.Product.Add(Product);
 
             _contextoDB.SaveChanges();
         }
 
         public List<Product> GetAllProducts()
         {
-            return _contextoDB.Products.Select(x => x).ToList();
+            return _contextoDB.Product.Select(x => x).ToList();
 
         }
 

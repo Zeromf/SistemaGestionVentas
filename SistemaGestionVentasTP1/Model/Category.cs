@@ -15,7 +15,7 @@ namespace SistemaGestionVentasTP1.Model
         public int CategoryId { get; set; }
         public string Name { get; set; }
 
-        public virtual ICollection<Product> Products { set; get; }
+        public virtual ICollection<Product> Product { set; get; }
 
 
     }

@@ -18,7 +18,7 @@ namespace SistemaGestionVentasTP1.Model
         public decimal TotalDiscount { get; set; }
         public decimal Taxes { get; set; }
         public decimal TotalPay { get; set; }
-        public List<SaleProduct> SaleProducts { get; set; }
+        public ICollection<SaleProduct> SaleProduct { get; set; }
 
 
     }

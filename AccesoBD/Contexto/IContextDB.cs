@@ -10,10 +10,10 @@ namespace SistemaGestionVentas.Contexto
 {
     public interface IContextDB
     {
-        DbSet<Category> Categories { get; set; }
-        DbSet<Product> Products { get; set; }
-        DbSet<Sale> Sales { get; set; }
-        DbSet<SaleProduct> SaleProducts { get; set; }
+        DbSet<Category> Category { get; set; }
+        DbSet<Product> Product { get; set; }
+        DbSet<Sale> Sale { get; set; }
+        DbSet<SaleProduct> SaleProduct { get; set; }
         int SaveChanges();
 
         bool EnsuredCreated();

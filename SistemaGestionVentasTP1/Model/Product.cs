@@ -20,7 +20,7 @@ namespace SistemaGestionVentasTP1.Model
         public int Discount { get; set; }
         public string ImageUrl { get; set; }
         public Category Category { get; set; }
-        public IList<SaleProduct> product { get; set; }
+        public virtual ICollection<SaleProduct> product { get; set; }
 
     }
 }

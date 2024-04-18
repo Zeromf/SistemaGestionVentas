@@ -23,14 +23,14 @@ namespace SistemaGestionVentas.Service
 
         public void AddCategory(Category category)
         {
-            _contextoDB.Categories.Add(category);
+            _contextoDB.Category.Add(category);
 
             _contextoDB.SaveChanges();
         }
 
         public List<Category> GetAllCategories()
         {
-            return _contextoDB.Categories.Select(x => x).ToList();
+            return _contextoDB.Category.Select(x => x).ToList();
 
         }
 

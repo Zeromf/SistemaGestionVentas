@@ -37,7 +37,7 @@ namespace SistemaGestionVentas.Service
                 Date = DateTime.Now,
             };
 
-            newSale.SaleProducts = new List<SaleProduct>();
+            newSale.SaleProduct = new List<SaleProduct>();
 
             foreach (var singleProduct in productosSeleccionados)
             {
@@ -45,7 +45,7 @@ namespace SistemaGestionVentas.Service
 
                 if (product != null)
                 {
-                    var existingProduct = newSale.SaleProducts.FirstOrDefault(sp => sp.ProductId == product.ProductId);
+                    var existingProduct = newSale.SaleProduct.FirstOrDefault(sp => sp.ProductId == product.ProductId);
 
                     if (existingProduct != null)
                     {
@@ -61,12 +61,12 @@ namespace SistemaGestionVentas.Service
                             Discount = product.Discount
                         };
 
-                        newSale.SaleProducts.Add(saleProduct);
+                        newSale.SaleProduct.Add(saleProduct);
                     }
                 }
             }
 
-            _contextoDB.Sales.Add(newSale);
+            _contextoDB.Sale.Add(newSale);
             _contextoDB.SaveChanges();
         }
     }

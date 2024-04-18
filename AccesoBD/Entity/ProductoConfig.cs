@@ -22,7 +22,7 @@ namespace SistemaGestionVentas.Entity
             entityBuilder.Property(x => x.ImageUrl).IsRequired();
             entityBuilder.Property(x => x.CategoryId).IsRequired();
             entityBuilder.HasOne(x => x.Category)
-                 .WithMany(p => p.Products)
+                 .WithMany(p => p.Product)
                  .HasForeignKey(x => x.CategoryId);
         }
 
