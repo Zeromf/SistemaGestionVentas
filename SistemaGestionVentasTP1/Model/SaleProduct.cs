@@ -20,5 +20,8 @@ namespace SistemaGestionVentasTP1.Model
         public decimal Discount { get; set; }
         public virtual Sale Sale { set; get; }
 
+        [ForeignKey("ProductId")]
+        public virtual Product Product { set; get; }
+
     }
 }
