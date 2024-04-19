@@ -31,6 +31,7 @@ namespace View.Menu
             _categoryService = categoryService;
         }
 
+        //Calcula la venta
         public void CalcularVenta()
         {
             productList = _productService.GetAllProducts();
@@ -73,7 +74,7 @@ namespace View.Menu
                 Console.WriteLine($"Productos en la categoría '{selectedCategory.Name}':");
                 MostrarProductosFiltrados(productsInCategory);
 
-                RealizarVenta(productsInCategory);
+                SeleccionProductos(productsInCategory);
             }
             else
             {
@@ -81,7 +82,8 @@ namespace View.Menu
             }
         }
 
-        private void RealizarVenta(List<Product> productsInCategory)
+        //Hace el calculo de la venta cuando selecciona el producto
+        private void SeleccionProductos(List<Product> productsInCategory)
         {
             List<Product> productosSeleccionados = new List<Product>();
 
@@ -121,7 +123,7 @@ namespace View.Menu
                     Console.WriteLine($"Se ha cancelado la selección del producto: {lastSelectedProduct.Name}");
                     continue;
                 }
-
+                //Seleccion del producto por indice
                 if (int.TryParse(input, out int selectedIndex) && EsIndiceValido(selectedIndex, productsInCategory.Count))
                 {
                     var selectedProduct = productsInCategory[selectedIndex - 1];
@@ -145,10 +147,9 @@ namespace View.Menu
             return selectedIndex >= 1 && selectedIndex <= maxIndex;
         }
 
-
+        // Filtrar productos por nombre
         private static void SeleccionarProductoPorNombre(string input, List<Product> productosSeleccionados)
         {
-            // Filtrar productos por nombre
             var filteredProducts = productList.Where(p => p.Name.ToLower().Contains(input.ToLower())).ToList();
 
             if (filteredProducts.Any())
@@ -187,6 +188,7 @@ namespace View.Menu
             }
         }
 
+        //Devuelve la venta realizada
         private void RegistrarVenta(List<Product> productosSeleccionados)
         {
             try

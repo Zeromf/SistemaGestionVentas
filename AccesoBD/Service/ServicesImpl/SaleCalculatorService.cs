@@ -12,6 +12,7 @@ namespace SistemaGestionVentas.Service
     public class SaleCalculatorService : ISaleCalculatorService
     {
         public (decimal subtotal, decimal totalDiscount, decimal totalPay)
+            //Calcula el detalle de la venta
             CalculateSaleDetails(IList<Product> products)
         {
             Console.Clear();

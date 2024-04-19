@@ -125,7 +125,7 @@ namespace Aplicacion.Migrations
                     b.HasData(
                         new
                         {
-                            ProductId = new Guid("29f94189-f059-454a-9bf0-a4f4410094f7"),
+                            ProductId = new Guid("ee95bf81-25db-4ad7-9896-87734628318c"),
                             CategoryId = 1,
                             Descripcion = "Lavadora de carga frontal con capacidad XX kg y múltiples programas de lavado.",
                             Discount = 25,
@@ -135,7 +135,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("561ceb17-81a5-4ee2-8380-1f186128ecdd"),
+                            ProductId = new Guid("dc27eb9a-8ff4-4417-bbdf-9da805030158"),
                             CategoryId = 1,
                             Descripcion = "Licuadora de alta potencia con motor de XXXW y cuchillas de acero inoxidable.",
                             Discount = 61,
@@ -145,7 +145,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("bfa8b8be-ae45-4cb4-bbe7-9c0efeaf805b"),
+                            ProductId = new Guid("a4cd6443-fd58-4e72-85e4-8b949c0d5632"),
                             CategoryId = 1,
                             Descripcion = "Horno eléctrico de convección con capacidad de XX litros y control digital.",
                             Discount = 9,
@@ -155,7 +155,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("952765eb-1c5a-487e-a60b-181e742c6c6d"),
+                            ProductId = new Guid("89141ddc-7b52-4b61-a506-06116a9a19df"),
                             CategoryId = 1,
                             Descripcion = "Aspiradora robotizada con sistema de mapeo inteligente y succión potente.",
                             Discount = 43,
@@ -165,7 +165,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("45b897b1-2120-4056-b1a1-7c33dbad9b79"),
+                            ProductId = new Guid("1c82243f-1515-44a8-bb00-126356b7c33d"),
                             CategoryId = 2,
                             Descripcion = "Smartphone de última generación con pantalla XX pulgadas y cámara de XXMP.",
                             Discount = 0,
@@ -175,7 +175,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("08dbd388-3c71-4637-a628-ba666ea61fb1"),
+                            ProductId = new Guid("c0459735-00b5-42e8-82f8-c152bc18267a"),
                             CategoryId = 2,
                             Descripcion = "Inflador De Neumáticos Portátil X8",
                             Discount = 0,
@@ -185,7 +185,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("68408c62-18fd-4726-918e-c5ac951948dc"),
+                            ProductId = new Guid("8fe8a9b0-fcdc-41ea-86f4-cb6a40111c8f"),
                             CategoryId = 2,
                             Descripcion = "Camara Digital Mirrorless Sony Alpha A6100 4k Wifi Sel1650.",
                             Discount = 0,
@@ -195,7 +195,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("32a3de0d-8847-452a-ae8a-0e8749e124cd"),
+                            ProductId = new Guid("149007c9-c929-46f7-8d96-e428478c7dd9"),
                             CategoryId = 2,
                             Descripcion = "Smart TV de 55 pulgadas con resolución 4K y sistema operativo XXX.",
                             Discount = 0,
@@ -205,7 +205,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("2f8c0398-1214-4440-8a65-8da6f7da3352"),
+                            ProductId = new Guid("f3ff2551-4fe4-491f-bd03-80386f901169"),
                             CategoryId = 2,
                             Descripcion = "Auriculares inalámbricos con cancelación de ruido y batería de larga duración.",
                             Discount = 0,
@@ -215,7 +215,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("5ae5bfa7-78d6-47ef-bbc4-42a7288bcd17"),
+                            ProductId = new Guid("3f1ad266-6e92-486a-94ed-5b7298e4b6b7"),
                             CategoryId = 2,
                             Descripcion = "Sony PlayStation 5 825GB God of War Ragnarok Bundle color blanco y negro.",
                             Discount = 11,
@@ -225,7 +225,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("42087386-c097-430d-b151-f8aa89e45fcb"),
+                            ProductId = new Guid("8f07ebeb-34b2-4b5c-9cb1-e8a70d763703"),
                             CategoryId = 3,
                             Descripcion = "Acolchado edredón 2 plazas y 1/2 (2 plazas y media) liso reversible Abrigado invierno.",
                             Discount = 7,
@@ -235,7 +235,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("7af2c6a7-e6e0-4d22-a32e-eeaddfcc267a"),
+                            ProductId = new Guid("73fb8c48-b1d5-46cb-a189-0ed93742de8d"),
                             CategoryId = 3,
                             Descripcion = "Cartera Cuero Genuino Reptil Bolso Mochila Mujer Cierre.",
                             Discount = 0,
@@ -245,7 +245,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("bdb312da-59f8-407a-82ea-e50be13fc4a4"),
+                            ProductId = new Guid("cb945498-8f0f-4bd7-9c41-86f2560b6bcd"),
                             CategoryId = 3,
                             Descripcion = "Anteojos de sol polarizados Vulk Reporter en color sblk/s10.",
                             Discount = 20,
@@ -255,7 +255,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("7f33e887-3ad6-4174-8d9e-68331fef34c1"),
+                            ProductId = new Guid("92e22039-4e36-4885-b501-017892cad354"),
                             CategoryId = 3,
                             Descripcion = "Smartwatch Reloj Inteligente Dt N0.1 Dt3 Mate Doble Malla.",
                             Discount = 13,
@@ -265,7 +265,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("8c33fcbe-ca6c-4fd9-a145-908fd889a0b5"),
+                            ProductId = new Guid("d70b5144-7020-45f4-b973-868162580773"),
                             CategoryId = 3,
                             Descripcion = "Zapatillas Puma Caven 2.0 Blanca",
                             Discount = 0,
@@ -275,7 +275,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("a9f2643a-4ce8-402a-96b1-e3153899a3bd"),
+                            ProductId = new Guid("2aef7a24-99e4-4484-ac11-1af23295eef5"),
                             CategoryId = 4,
                             Descripcion = "Juego De Sabanas Queen 400hilos 100% Algodon.",
                             Discount = 25,
@@ -285,7 +285,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("f4ebb123-a7c2-49fc-93f4-43e09d68dc37"),
+                            ProductId = new Guid("bbd83a7d-17ad-4f57-a4cc-44c94aa63a48"),
                             CategoryId = 4,
                             Descripcion = "Jarrón de cerámica artesanal con acabado brillante y diseño moderno.",
                             Discount = 5,
@@ -295,7 +295,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("46b0ab0d-b3a2-4881-a56a-7f6af27638f6"),
+                            ProductId = new Guid("d25f8def-9da1-4e7e-b9e9-b529d0f42ade"),
                             CategoryId = 4,
                             Descripcion = "Lámpara de pie moderna con base de acero inoxidable y pantalla ajustable.",
                             Discount = 0,
@@ -305,7 +305,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("ebde990a-d05e-450f-9b89-df9114965f74"),
+                            ProductId = new Guid("d7f3a4ad-f41d-45b1-97c1-e51901ec3f45"),
                             CategoryId = 4,
                             Descripcion = "Juego de cuchillos de cocina de alta calidad con mango ergonómico y hoja de acero inoxidable.",
                             Discount = 5,
@@ -315,7 +315,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("8fda0834-4f1c-4e23-a3ca-7fc3f9c25827"),
+                            ProductId = new Guid("071d1a12-bfd8-49f2-bb35-95eef198f7e3"),
                             CategoryId = 5,
                             Descripcion = "Set de maquillaje profesional con paleta de sombras, labiales y brochas.",
                             Discount = 28,
@@ -325,7 +325,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("34464048-0f32-4572-9ce3-2e11cece1cfe"),
+                            ProductId = new Guid("fcc6e3ed-3f2f-4c53-a109-d3d207455cbd"),
                             CategoryId = 5,
                             Descripcion = "Máquina de afeitar eléctrica de precisión con cabezales flotantes y recortador de precisión.",
                             Discount = 0,
@@ -335,7 +335,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("f80660c9-1bb0-48f4-ad77-65971d02963f"),
+                            ProductId = new Guid("6374796e-015d-4ca0-b149-543ecab3fab9"),
                             CategoryId = 5,
                             Descripcion = "Serum facial rejuvenecedor con ácido hialurónico y vitaminas antioxidantes.",
                             Discount = 0,
@@ -345,7 +345,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("8512eebe-7703-4b26-8f56-cb531647bd2e"),
+                            ProductId = new Guid("f9c0c674-84ab-42fb-8e7f-c7c64e624857"),
                             CategoryId = 5,
                             Descripcion = "Cepillo de dientes eléctrico recargable con temporizador y cabezales intercambiables.",
                             Discount = 24,
@@ -355,7 +355,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("0cf56d2e-faa7-4f4d-8ce5-476967e165d2"),
+                            ProductId = new Guid("5d386339-d5a8-4673-a1a3-d31066844093"),
                             CategoryId = 5,
                             Descripcion = "Kit de manicura y pedicura con lima, cortaúñas y herramientas de precisión.",
                             Discount = 60,
@@ -365,7 +365,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("d0da5f05-8916-4e57-b0b5-5def8d0b39b5"),
+                            ProductId = new Guid("1766f2b1-75be-4103-bab3-efb0b3191c14"),
                             CategoryId = 6,
                             Descripcion = "Bicicleta de montaña todo terreno con cuadro de aluminio y cambios Shimano.",
                             Discount = 15,
@@ -375,7 +375,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("7bc2be2f-dd0b-4e23-8e71-10934a1bc2b8"),
+                            ProductId = new Guid("b07d5b1e-695a-401f-bba9-df00e8d525c2"),
                             CategoryId = 6,
                             Descripcion = "Tienda de campaña para 4 personas con doble techo y sistema de ventilación.",
                             Discount = 25,
@@ -385,7 +385,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("38b68a00-e8bd-46a6-a0e9-de44df0f4735"),
+                            ProductId = new Guid("c28ccc5f-5c4d-4453-8119-a9989e3e078f"),
                             CategoryId = 6,
                             Descripcion = "Raquetas de tenis de alta gama con tecnología de absorción de impactos y empuñadura ergonómica.",
                             Discount = 0,
@@ -395,7 +395,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("02b0b5a1-4761-426c-8509-9d83d44f69ab"),
+                            ProductId = new Guid("2e645ead-656d-4ed0-8d4b-357277129ec3"),
                             CategoryId = 6,
                             Descripcion = "Balón de fútbol oficial con diseño aerodinámico y cubierta de cuero sintético.",
                             Discount = 0,
@@ -405,7 +405,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("1bd91115-266f-46aa-82aa-9e47cb74ee82"),
+                            ProductId = new Guid("8ae75ae6-63d3-418c-9d3e-f1b632e21281"),
                             CategoryId = 7,
                             Descripcion = "Set de construcción de bloques de LEGO con XX piezas y figuras coleccionables.",
                             Discount = 0,
@@ -415,7 +415,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("3dfb6722-5ca7-413d-92a0-ed5e792511f8"),
+                            ProductId = new Guid("cea30e0b-5bab-4023-85c0-7f63be46f457"),
                             CategoryId = 7,
                             Descripcion = "Muñeca interactiva con funciones inteligentes y accesorios intercambiables.",
                             Discount = 0,
@@ -425,7 +425,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("8bf5b3d5-7164-4042-9b20-d4ea01a8f18f"),
+                            ProductId = new Guid("48630c2c-6936-4057-a0d3-d6ac00502f7b"),
                             CategoryId = 7,
                             Descripcion = "Rompecabezas de 1000 piezas con imagen de paisaje panorámico.",
                             Discount = 0,
@@ -435,7 +435,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("d1feb028-a5f3-409d-8be7-d9cc35723985"),
+                            ProductId = new Guid("c8fb4cc8-5ef0-4ac2-98b9-b3c76a1217f5"),
                             CategoryId = 7,
                             Descripcion = "Juego de mesa estratégico con tablero plegable y fichas de madera.",
                             Discount = 0,
@@ -445,7 +445,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("b61ca699-1cba-417c-ba2b-1af3ebdbccf6"),
+                            ProductId = new Guid("582ba12d-3251-479a-8033-174606613b4b"),
                             CategoryId = 8,
                             Descripcion = "Caja de vinos seleccionados con variedad de cepas y añejamiento mínimo de X años.",
                             Discount = 0,
@@ -455,7 +455,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("9ac2cea9-81f1-4015-a11d-c6a53a05ff84"),
+                            ProductId = new Guid("b08b20d7-420b-4795-8033-e159a95ec1d0"),
                             CategoryId = 8,
                             Descripcion = "Cesta de frutas frescas de temporada con selección de frutas maduras y jugosas.",
                             Discount = 17,
@@ -465,7 +465,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("3838de78-e8a3-424b-98ce-7eac9f9f80ac"),
+                            ProductId = new Guid("60fe661f-c4a2-4c9b-aff4-9640bfcdf83a"),
                             CategoryId = 8,
                             Descripcion = "Set de gourmet de chocolates belgas con variedad de sabores y presentación elegante.",
                             Discount = 0,
@@ -475,7 +475,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("91cde0d5-9990-4b91-acc0-354a80db106e"),
+                            ProductId = new Guid("64161d03-8eb7-457a-a2b7-2dde19b05fae"),
                             CategoryId = 8,
                             Descripcion = "Cafetera espresso automática con sistema de preparación rápida y vaporizador integrado.",
                             Discount = 7,
@@ -485,7 +485,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("18b914f4-5177-4090-910c-7acf1900ff74"),
+                            ProductId = new Guid("3213612f-44cd-4858-8943-0ab15be56220"),
                             CategoryId = 9,
                             Descripcion = "Bestseller del New York Times en formato papel o digital.",
                             Discount = 0,
@@ -495,7 +495,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("5fad3be9-e114-4e91-8ce0-12dcaafe5513"),
+                            ProductId = new Guid("d495ee08-91f8-4293-9ecb-b7037bf18d79"),
                             CategoryId = 9,
                             Descripcion = "Colección de clásicos de la literatura mundial en edición especial.",
                             Discount = 6,
@@ -505,7 +505,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("560d8764-7055-4433-90f3-6291ebd173ee"),
+                            ProductId = new Guid("7a7cc0a3-9ab7-4d32-9871-f878d897d422"),
                             CategoryId = 9,
                             Descripcion = "Atlas geográfico interactivo con mapas detallados y funciones multimedia.",
                             Discount = 0,
@@ -515,7 +515,7 @@ namespace Aplicacion.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("d5ac628d-d666-4cd4-a885-3aec5b117ff5"),
+                            ProductId = new Guid("ec796883-ce2e-4176-8343-764c0172c373"),
                             CategoryId = 9,
                             Descripcion = "Kit de experimentos científicos para niños con materiales seguros y guía de actividades.",
                             Discount = 0,
@@ -596,7 +596,7 @@ namespace Aplicacion.Migrations
 
             modelBuilder.Entity("SistemaGestionVentasTP1.Model.SaleProduct", b =>
                 {
-                    b.HasOne("SistemaGestionVentasTP1.Model.Product", null)
+                    b.HasOne("SistemaGestionVentasTP1.Model.Product", "Product")
                         .WithMany("product")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -607,6 +607,8 @@ namespace Aplicacion.Migrations
                         .HasForeignKey("SaleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Product");
 
                     b.Navigation("Sale");
                 });

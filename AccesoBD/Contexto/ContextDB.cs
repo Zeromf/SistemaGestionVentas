@@ -36,16 +36,19 @@ namespace SistemaGestionVentas.Contexto
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //Configuro las relaciones entre las tablas de category, product , saleproduct y sale
             modelBuilder.ApplyConfiguration(new CategoryConfig());
             modelBuilder.ApplyConfiguration(new ProductoConfig());
             modelBuilder.ApplyConfiguration(new SaleConfig());
             modelBuilder.ApplyConfiguration(new SaleProductConfig());
 
+            //Cargo 10 categorias y 10 productos por defecto en la base de datos
             modelBuilder.ApplyConfiguration(new CategoryConfigurationDefault());
             modelBuilder.ApplyConfiguration(new ProductsConfigurationDefault());
 
         }
 
+        //Creo la base de datos si no existe
         public bool EnsuredCreated()
         {
             return this.Database.EnsureCreated();
