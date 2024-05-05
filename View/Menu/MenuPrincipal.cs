@@ -2,10 +2,6 @@
 using SistemaGestionVentas.Service;
 using SistemaGestionVentasTP1.Service;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace View.Menu
 {
@@ -20,16 +16,17 @@ namespace View.Menu
         {
             _productService = productService;
             _categoriaService = categoryService;
-            _contextDB =contextDB;
+            _contextDB = contextDB;
             _saleService = saleService;
         }
 
-        public void ImprimirMenu() {
-            
+        public void ImprimirMenu()
+        {
+
             _contextDB.EnsuredCreated();
 
             MenuListarProducto menuListarProducto = new MenuListarProducto(_productService, _categoriaService);
-            MenuRegistrarVenta menuRegistrarVenta = new MenuRegistrarVenta(_contextDB, _productService, _saleService,_categoriaService);
+            MenuRegistrarVenta menuRegistrarVenta = new MenuRegistrarVenta(_contextDB, _productService, _saleService, _categoriaService);
             bool exit = false;
 
             while (!exit)

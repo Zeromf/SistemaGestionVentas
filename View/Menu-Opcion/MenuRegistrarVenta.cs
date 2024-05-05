@@ -1,14 +1,10 @@
-﻿using SistemaGestionVentas.Const;
-using SistemaGestionVentas.Contexto;
+﻿using SistemaGestionVentas.Contexto;
 using SistemaGestionVentas.Service;
 using SistemaGestionVentasTP1.Model;
 using SistemaGestionVentasTP1.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace View.Menu
 {
@@ -18,14 +14,11 @@ namespace View.Menu
         private readonly ISaleService _saleService;
         private static IList<Product> productList;
         private static IList<Category> categorieList;
-
-        private readonly IContextDB _contextDB;
         private static Sale sale = new Sale();
         private readonly ICategoryService _categoryService;
 
-        public MenuRegistrarVenta(IContextDB contextDB, IProductService productService, ISaleService saleService, ICategoryService categoryService)
+        public MenuRegistrarVenta(IProductService productService, ISaleService saleService, ICategoryService categoryService)
         {
-            _contextDB = contextDB;
             _productService = productService;
             _saleService = saleService;
             _categoryService = categoryService;
@@ -195,7 +188,7 @@ namespace View.Menu
             {
                 _saleService.RegisterSale(productList, sale, productosSeleccionados);
                 Console.WriteLine("La venta ha sido registrada correctamente.");
-               
+
             }
             catch (Exception ex)
             {

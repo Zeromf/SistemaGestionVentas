@@ -1,14 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using SistemaGestionVentas.Contexto;
 using SistemaGestionVentas.Entity;
 using SistemaGestionVentasTP1.Model;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SistemaGestionVentas.Contexto
 {
