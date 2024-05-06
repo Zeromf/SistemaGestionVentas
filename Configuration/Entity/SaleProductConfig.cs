@@ -12,7 +12,7 @@ namespace SistemaGestionVentas.Entity
             entityBuilder.Property(vp => vp.Quantity).IsRequired();
             entityBuilder.Property(vp => vp.Price).IsRequired();
             entityBuilder.Property(vp => vp.Discount).IsRequired();
-            entityBuilder.HasOne(vp => vp.Sale).WithMany(v => v.SaleProduct);
+            entityBuilder.HasOne(vp => vp.sale).WithMany(v => v.SaleProduct);
         }
     }
 }

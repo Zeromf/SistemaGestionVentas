@@ -54,7 +54,7 @@ namespace SistemaGestionVentas.Service
                         var saleProduct = new SaleProduct
                         {
                             ProductId = product.ProductId,
-                            Quantity = 1, // cantidad producto empieza en 1 por defecto     
+                            Quantity = 1,  
                             Price = product.Price,
                             Discount = product.Discount
                         };

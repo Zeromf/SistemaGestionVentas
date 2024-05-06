@@ -8,6 +8,7 @@ namespace SistemaGestionVentasTP1.Model
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [StringLength(100)]
         public int CategoryId { get; set; }
         public string Name { get; set; }
 

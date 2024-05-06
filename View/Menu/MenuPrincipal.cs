@@ -49,6 +49,7 @@ namespace View.Menu
                         menuListarProducto.ListarProductos();
                         break;
                     case "2":
+                        Console.Clear();
                         menuRegistrarVenta.CalcularVenta();
                         break;
                     case "3":

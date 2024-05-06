@@ -10,8 +10,8 @@ namespace SistemaGestionVentas.Entity
         {
             entityBuilder.HasKey(c => c.CategoryId);
 
-            entityBuilder.Property(c => c.Name).IsRequired().HasMaxLength(200);
-            entityBuilder.HasMany(c => c.Product).WithOne(p => p.Category);
+            entityBuilder.Property(c => c.Name).IsRequired().HasMaxLength(100);
+            entityBuilder.HasMany(c => c.Product).WithOne(p => p.category);
 
         }
     }

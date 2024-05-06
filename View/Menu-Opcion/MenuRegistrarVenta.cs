@@ -14,11 +14,13 @@ namespace View.Menu
         private readonly ISaleService _saleService;
         private static IList<Product> productList;
         private static IList<Category> categorieList;
+        private readonly IContextDB _contextDB;
         private static Sale sale = new Sale();
         private readonly ICategoryService _categoryService;
 
-        public MenuRegistrarVenta(IProductService productService, ISaleService saleService, ICategoryService categoryService)
+        public MenuRegistrarVenta(IContextDB contextDB, IProductService productService, ISaleService saleService, ICategoryService categoryService)
         {
+            _contextDB = contextDB;
             _productService = productService;
             _saleService = saleService;
             _categoryService = categoryService;
@@ -30,14 +32,14 @@ namespace View.Menu
             productList = _productService.GetAllProducts();
             if (!productList.Any())
             {
-                Console.WriteLine("No hay productos disponibles para la venta.");
+                Console.WriteLine("No hay productos disponibles.");
                 return;
             }
 
             categorieList = _categoryService.GetAllCategories();
             if (!categorieList.Any())
             {
-                Console.WriteLine("No hay categorias disponibles para la venta.");
+                Console.WriteLine("No hay categorías disponibles.");
                 return;
             }
 
@@ -47,9 +49,7 @@ namespace View.Menu
                 Console.WriteLine($"{i + 1}. {categorieList[i].Name}");
             }
 
-            Console.WriteLine("***********************************************************************************************************************");
-            Console.WriteLine("Seleccione el número de la categoría para ver los productos, o escriba 'fin' para volver al menu principal.");
-            Console.WriteLine("***********************************************************************************************************************");
+            Console.WriteLine("Seleccione el número de la categoría para ver los productos, o escriba 'fin' para volver al menú principal.");
             Console.Write("Opción: ");
 
             string inputCategory = Console.ReadLine();
@@ -61,8 +61,9 @@ namespace View.Menu
 
             if (int.TryParse(inputCategory, out int selectedCategoryIndex) && EsIndiceValido(selectedCategoryIndex, categorieList.Count))
             {
+                Console.Clear();
                 var selectedCategory = categorieList[selectedCategoryIndex - 1];
-                var productsInCategory = productList.Where(p => p.CategoryId == selectedCategory.CategoryId).ToList();
+                var productsInCategory = productList.Where(p => p.Category == selectedCategory.CategoryId).ToList();
 
                 Console.WriteLine($"Productos en la categoría '{selectedCategory.Name}':");
                 MostrarProductosFiltrados(productsInCategory);
@@ -75,18 +76,13 @@ namespace View.Menu
             }
         }
 
-        //Hace el calculo de la venta cuando selecciona el producto
         private void SeleccionProductos(List<Product> productsInCategory)
         {
             List<Product> productosSeleccionados = new List<Product>();
 
             while (true)
             {
-                Console.WriteLine("***********************************************************************************************************************");
-                Console.WriteLine("Seleccione el número del producto o 'fin' para comprar. " +
-                    "Busque por nombre o '0' para volver, 'cancel' para eliminar último producto.");
-                Console.WriteLine("***********************************************************************************************************************");
-                Console.Write("Opción o nombre del producto: ");
+                Console.WriteLine("Seleccione el número del producto o 'fin' para comprar. '0' para volver, 'cancel' para eliminar último producto.");
 
                 string input = Console.ReadLine();
 
@@ -98,6 +94,7 @@ namespace View.Menu
 
                 if (input.ToLower() == "fin")
                 {
+                    Console.Clear();
                     break;
                 }
 
@@ -108,7 +105,6 @@ namespace View.Menu
                     return;
                 }
 
-                //Cancela el producto
                 if (input.ToLower() == "cancel" && productosSeleccionados.Any())
                 {
                     var lastSelectedProduct = productosSeleccionados.Last();
@@ -116,7 +112,7 @@ namespace View.Menu
                     Console.WriteLine($"Se ha cancelado la selección del producto: {lastSelectedProduct.Name}");
                     continue;
                 }
-                //Seleccion del producto por indice
+
                 if (int.TryParse(input, out int selectedIndex) && EsIndiceValido(selectedIndex, productsInCategory.Count))
                 {
                     var selectedProduct = productsInCategory[selectedIndex - 1];
@@ -129,9 +125,7 @@ namespace View.Menu
                 }
             }
 
-            Console.WriteLine("***********************************************************************************************************************");
             Console.WriteLine($"Ha seleccionado {productosSeleccionados.Count} producto(s) para la venta.");
-            Console.WriteLine("***********************************************************************************************************************");
             RegistrarVenta(productosSeleccionados);
         }
 
@@ -140,7 +134,6 @@ namespace View.Menu
             return selectedIndex >= 1 && selectedIndex <= maxIndex;
         }
 
-        // Filtrar productos por nombre
         private static void SeleccionarProductoPorNombre(string input, List<Product> productosSeleccionados)
         {
             var filteredProducts = productList.Where(p => p.Name.ToLower().Contains(input.ToLower())).ToList();
@@ -148,7 +141,6 @@ namespace View.Menu
             if (filteredProducts.Any())
             {
                 MostrarProductosFiltrados(filteredProducts);
-
                 SeleccionarProductoFiltrado(filteredProducts, productosSeleccionados);
             }
             else
@@ -181,21 +173,17 @@ namespace View.Menu
             }
         }
 
-        //Devuelve la venta realizada
         private void RegistrarVenta(List<Product> productosSeleccionados)
         {
             try
             {
                 _saleService.RegisterSale(productList, sale, productosSeleccionados);
                 Console.WriteLine("La venta ha sido registrada correctamente.");
-
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Ha ocurrido un error al intentar registrar la venta: " + ex.Message);
             }
-
-
         }
     }
 }

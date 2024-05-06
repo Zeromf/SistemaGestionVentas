@@ -10,15 +10,15 @@ namespace SistemaGestionVentas.Entity
         {
             entityBuilder.HasKey(x => x.ProductId);
 
-            entityBuilder.Property(x => x.Name).IsRequired().HasMaxLength(200);
-            entityBuilder.Property(x => x.Descripcion).HasMaxLength(200);
+            entityBuilder.Property(x => x.Name).IsRequired().HasMaxLength(100);
+            entityBuilder.Property(x => x.Descripcion).HasMaxLength(int.MaxValue);
             entityBuilder.Property(x => x.Price);
             entityBuilder.Property(x => x.Discount);
             entityBuilder.Property(x => x.ImageUrl).IsRequired();
-            entityBuilder.Property(x => x.CategoryId).IsRequired();
-            entityBuilder.HasOne(x => x.Category)
+            entityBuilder.Property(x => x.Category).IsRequired();
+            entityBuilder.HasOne(x => x.category)
                  .WithMany(p => p.Product)
-                 .HasForeignKey(x => x.CategoryId);
+                 .HasForeignKey(x => x.Category);
         }
 
 

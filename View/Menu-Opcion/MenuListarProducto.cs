@@ -35,7 +35,7 @@ namespace View.Menu
                 //Lista de todos los productos
                 Product product = productList[i];
                 //Compara la categoria id con la del producto ,si coincido lo trae
-                Category category = categoryList.FirstOrDefault(c => c.CategoryId == product.CategoryId);
+                Category category = categoryList.FirstOrDefault(c => c.CategoryId == product.Category);
                 // Verificar si se encontró la categoría
                 if (category != null)
                 {
