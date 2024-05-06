@@ -39,14 +39,16 @@ namespace SistemaGestionVentas.Service
             }
 
             // Calcular subtotal, descuento total y total de la venta basado en productos seleccionados
-            decimal subtotal = CalculateSubtotal(products);
-            decimal totalDiscount = CalculateTotalDiscount(products);
+            decimal subtotal = CalculateSubtotal(products); 
+            decimal totalDiscount = subtotal * (CalculateTotalDiscount(products)/100);
             decimal taxes = Constantes.Taxes;
-            decimal totalPay = (subtotal - totalDiscount) * taxes;
+            decimal totalPayTerm = subtotal - totalDiscount;
+
+            decimal totalPay = totalPayTerm + (totalDiscount*(taxes/100));
 
             // Mostrar importe total, subtotal y descuento
             Console.WriteLine($"Subtotal: {subtotal:C}");
-            Console.WriteLine($"Descuento:({totalDiscount:F2}%)");
+            Console.WriteLine($"Descuento:({CalculateTotalDiscount(products):F2}%)");
             Console.WriteLine($"Importe Total: {totalPay:C}");
 
             return (subtotal, totalDiscount, totalPay);
@@ -71,5 +73,7 @@ namespace SistemaGestionVentas.Service
             }
             return totalDiscount;
         }
+
+
     }
 }
