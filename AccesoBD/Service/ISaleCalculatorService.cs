@@ -5,7 +5,7 @@ namespace SistemaGestionVentas.Service
 {
     public interface ISaleCalculatorService
     {
-        (decimal subtotal, decimal totalDiscount, decimal totalPay) CalculateSaleDetails(IList<Product> products);
+        (decimal subtotal, decimal totalDiscount, decimal totalPay) CalculateSaleDetails(List<(Product product, int quantity)> productosSeleccionados);
 
     }
 }

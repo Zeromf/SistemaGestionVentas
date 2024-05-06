@@ -11,7 +11,7 @@ namespace SistemaGestionVentas.Service
     {
         public (decimal subtotal, decimal totalDiscount, decimal totalPay)
             //Calcula el detalle de la venta
-            CalculateSaleDetails(IList<Product> products)
+            CalculateSaleDetails(List<(Product product, int quantity)> products)
         {
             Console.Clear();
             Console.WriteLine("¿Desea ver el detalle de los productos? (Si/No)");
@@ -21,10 +21,11 @@ namespace SistemaGestionVentas.Service
             {
                 // Mostrar detalle de los productos
                 int contador = 1;
-                foreach (var product in products)
+                foreach (var (product, quantity) in products)
                 {
                     Console.WriteLine($"Producto{contador}: {product.Name}");
                     Console.WriteLine($"Precio: {product.Price:C}");
+                    Console.WriteLine($"Cantidad: {quantity}");
                     Console.WriteLine($"Descuento: ({product.Discount:F2}%)");
 
                     Console.WriteLine("-----------------------------");
@@ -51,14 +52,24 @@ namespace SistemaGestionVentas.Service
             return (subtotal, totalDiscount, totalPay);
         }
 
-        private decimal CalculateSubtotal(IList<Product> products)
+        private decimal CalculateSubtotal(List<(Product product, int quantity)> products)
         {
-            return products.Sum(p => p.Price);
+            decimal subtotal = 0;
+            foreach (var (product, quantity) in products)
+            {
+                subtotal += product.Price * quantity;
+            }
+            return subtotal;
         }
 
-        private decimal CalculateTotalDiscount(IList<Product> products)
+        private decimal CalculateTotalDiscount(List<(Product product, int quantity)> products)
         {
-            return products.Sum(p => p.Discount);
+            decimal totalDiscount = 0;
+            foreach (var (product, quantity) in products)
+            {
+                totalDiscount += product.Discount * quantity;
+            }
+            return totalDiscount;
         }
     }
 }

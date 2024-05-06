@@ -5,7 +5,7 @@ namespace SistemaGestionVentasTP1.Service
 {
     public interface ISaleService
     {
-        void RegisterSale(IList<Product> ProductL, Sale sale, List<Product> productosSeleccionados);
+        void RegisterSale(IList<Product> ProductL, Sale sale, List<(Product product, int quantity)> productosSeleccionados);
 
 
     }

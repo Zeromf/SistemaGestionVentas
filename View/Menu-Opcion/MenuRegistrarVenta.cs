@@ -78,7 +78,7 @@ namespace View.Menu
 
         private void SeleccionProductos(List<Product> productsInCategory)
         {
-            List<Product> productosSeleccionados = new List<Product>();
+            List<(Product product, int quantity)> productosSeleccionados = new List<(Product product, int quantity)>();
 
             while (true)
             {
@@ -107,34 +107,58 @@ namespace View.Menu
 
                 if (input.ToLower() == "cancel" && productosSeleccionados.Any())
                 {
-                    var lastSelectedProduct = productosSeleccionados.Last();
-                    productosSeleccionados.Remove(lastSelectedProduct);
-                    Console.WriteLine($"Se ha cancelado la selección del producto: {lastSelectedProduct.Name}");
+                    productosSeleccionados.RemoveAt(productosSeleccionados.Count - 1);
+                    Console.WriteLine($"Se ha cancelado la selección del último producto.");
                     continue;
                 }
 
                 if (int.TryParse(input, out int selectedIndex) && EsIndiceValido(selectedIndex, productsInCategory.Count))
                 {
                     var selectedProduct = productsInCategory[selectedIndex - 1];
-                    productosSeleccionados.Add(selectedProduct);
-                    Console.WriteLine($"Ha seleccionado el producto: {selectedProduct.Name}");
+                    int quantity = PedirCantidad(selectedProduct);
+                    if (quantity > 0)
+                    {
+                        productosSeleccionados.Add((selectedProduct, quantity));
+                        Console.WriteLine($"Ha seleccionado {quantity} unidad(es) del producto: {selectedProduct.Name}");
+                    }
                 }
                 else
                 {
-                    SeleccionarProductoPorNombre(input, productosSeleccionados);
+                    SeleccionarProductoPorNombre(input, productsInCategory, productosSeleccionados);
                 }
             }
 
             Console.WriteLine($"Ha seleccionado {productosSeleccionados.Count} producto(s) para la venta.");
             RegistrarVenta(productosSeleccionados);
         }
-
+        private static int PedirCantidad(Product product)
+        {
+            int quantity = 0;
+            while (true)
+            {
+                Console.Write($"Ingrese la cantidad de {product.Name} que desea agregar a la venta: ");
+                if (int.TryParse(Console.ReadLine(), out quantity))
+                {
+                    if (quantity <= 0)
+                    {
+                        Console.WriteLine("La cantidad debe ser un número entero positivo.");
+                        continue;
+                    }
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Entrada inválida. Por favor, ingrese un número entero positivo.");
+                }
+            }
+            return quantity;
+        }
         private static bool EsIndiceValido(int selectedIndex, int maxIndex)
         {
             return selectedIndex >= 1 && selectedIndex <= maxIndex;
         }
 
-        private static void SeleccionarProductoPorNombre(string input, List<Product> productosSeleccionados)
+        private static void SeleccionarProductoPorNombre(string input, List<Product> productList, List<(Product product, int quantity)> productosSeleccionados)
         {
             var filteredProducts = productList.Where(p => p.Name.ToLower().Contains(input.ToLower())).ToList();
 
@@ -149,6 +173,7 @@ namespace View.Menu
             }
         }
 
+
         private static void MostrarProductosFiltrados(List<Product> filteredProducts)
         {
             Console.WriteLine("Productos encontrados:");
@@ -158,14 +183,18 @@ namespace View.Menu
             }
         }
 
-        private static void SeleccionarProductoFiltrado(List<Product> filteredProducts, List<Product> productosSeleccionados)
+        private static void SeleccionarProductoFiltrado(List<Product> filteredProducts, List<(Product product, int quantity)> productosSeleccionados)
         {
             Console.Write("Seleccione el número del producto que desea comprar: ");
             if (int.TryParse(Console.ReadLine(), out int selectedByNameIndex) && EsIndiceValido(selectedByNameIndex, filteredProducts.Count))
             {
                 var selectedProduct = filteredProducts[selectedByNameIndex - 1];
-                productosSeleccionados.Add(selectedProduct);
-                Console.WriteLine($"Ha seleccionado el producto: {selectedProduct.Name}");
+                int quantity = PedirCantidad(selectedProduct);
+                if (quantity > 0)
+                {
+                    productosSeleccionados.Add((selectedProduct, quantity));
+                    Console.WriteLine($"Ha seleccionado {quantity} unidad(es) del producto: {selectedProduct.Name}");
+                }
             }
             else
             {
@@ -173,7 +202,7 @@ namespace View.Menu
             }
         }
 
-        private void RegistrarVenta(List<Product> productosSeleccionados)
+        private void RegistrarVenta(List<(Product product, int quantity)> productosSeleccionados)
         {
             try
             {
