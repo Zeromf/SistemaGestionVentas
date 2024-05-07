@@ -6,7 +6,7 @@ namespace Application.Interface.IService
 {
     public interface IProductService
     {
-        public List<Product> GetListProducts();
+        public List<Product> ListProducts();
         public Product GetProductById(Guid id);
     }
 }

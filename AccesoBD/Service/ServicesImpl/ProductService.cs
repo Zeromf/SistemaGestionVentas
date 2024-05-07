@@ -15,7 +15,7 @@ namespace Application.Service
             _QueryProduct = QueryProduct;
         }
 
-        public List<Product> GetListProducts()
+        public List<Product> ListProducts()
         {
             return _QueryProduct.GetListProducts();
         }

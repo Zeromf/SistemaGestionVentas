@@ -11,9 +11,9 @@ namespace Application.Service
     {
         private readonly ISaleRepository _saleCommand;
         private readonly IProductService _product;
-        private readonly ISalePrinter _salePrinter;
+        private readonly ISaleConsole _salePrinter;
 
-        public SaleService(ISaleRepository saleRepository, IProductService product, ISalePrinter printer)
+        public SaleService(ISaleRepository saleRepository, IProductService product, ISaleConsole printer)
         {
             _saleCommand = saleRepository;
             _product = product;

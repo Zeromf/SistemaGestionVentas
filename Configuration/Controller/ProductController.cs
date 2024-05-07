@@ -15,11 +15,11 @@ namespace Infraestructure.Controller
             _productPrinter = productPrinter;
         }
 
-        public void GetListProducts()
+        public void ListarProductos()
         {
             try
             {
-                var products = _productService.GetListProducts();
+                var products = _productService.ListProducts();
                 if (products != null)
                 {
                     _productPrinter.ListProductDetail(products);
@@ -27,7 +27,7 @@ namespace Infraestructure.Controller
             }
             catch (Exception ex)
             {
-                Console.WriteLine("\n     ERROR: Ocurrió un error al listar. Detalles: " + ex.Message);
+                Console.WriteLine("\nERROR: Ocurrió un error al listar. Detalles: " + ex.Message);
             }
         }
     }

@@ -2,7 +2,7 @@
 
 namespace Application.Interface.IPrinter
 {
-    public interface ISalePrinter
+    public interface ISaleConsole
     {
         public void SalePrint(Sale sale);
         public void SaleDetail(Sale sale);

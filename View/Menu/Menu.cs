@@ -18,33 +18,33 @@ namespace Presentation.Menu
             string option;
             while (true)
             {
-                Console.WriteLine("=====================================");
-                Console.WriteLine("             OctopuStore             ");
-                Console.WriteLine("=====================================\n");
-                Console.WriteLine("¡Bienvenido!\n");
-                Console.WriteLine("1. Listar productos");
-                Console.WriteLine("2. Realizar una venta");
-                Console.WriteLine("0. Salir\n");
-                Console.Write("Seleccione una opción: ");
+                Console.WriteLine("╔════════════════════════════════╗");
+                Console.WriteLine("║        MENÚ PRINCIPAL           ║");
+                Console.WriteLine("╠════════════════════════════════╣");
+                Console.WriteLine("║ 1. Listar productos             ║");
+                Console.WriteLine("║ 2. Realizar una venta           ║");
+                Console.WriteLine("║ 3. Salir                        ║");
+                Console.WriteLine("╚════════════════════════════════╝");
 
                 option = Console.ReadLine();
 
                 switch (option)
                 {
                     case "1":
-                        _productController.GetListProducts();
+                        _productController.ListarProductos();
                         break;
                     case "2":
-                        _saleController.CreateSale();
+                        _saleController.CrearVenta();
                         break;
-                    case "0":
-                        Console.WriteLine("¡Hasta luego!");
+                    case "3":
+                        Console.WriteLine("Gracias por utilizar nuestro sistema. ¡Hasta luego!");
                         Thread.Sleep(1000);
                         Console.Clear();
                         Environment.Exit(0);
                         break;
                     default:
-                        Console.WriteLine("Opción inválida, por favor intente nuevamente.");
+                        Console.Clear();
+                        Console.WriteLine("Opción no válida. Por favor, seleccione una opción válida.");
                         break;
                 }
 

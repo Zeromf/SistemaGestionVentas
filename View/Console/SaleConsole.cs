@@ -4,19 +4,19 @@ using SistemaGestionVentasTP1.Model;
 
 namespace Presentation.Printers
 {
-    public class SaleConsole : ISalePrinter
+    public class SaleConsole : ISaleConsole
     {
         public void SalePrint(Sale sale)
         {
             try
             {
                 Console.WriteLine("\n----- Imprimiendo Venta -----\n");
-                Console.WriteLine($"Fecha: {sale.Date}");
+                Console.WriteLine($"Fecha de la venta: {sale.Date}");
+                
                 Console.WriteLine("Productos:");
-
                 foreach (var saleProduct in sale.SaleProduct)
                 {
-                    Console.WriteLine($"- {saleProduct.Quantity} unidades de {saleProduct.Product.Name}: ${saleProduct.Price} (descuento: {saleProduct.Discount}%)");
+                    Console.WriteLine($"- {saleProduct.Quantity} unidades de {saleProduct.Product.Name} a ${saleProduct.Price} cada una (descuento: {saleProduct.Discount}%)");
                 }
 
                 SaleDetail(sale);
@@ -33,7 +33,7 @@ namespace Presentation.Printers
         {
             try
             {
-                Console.WriteLine("\n= Detalle de venta =\n");
+                Console.WriteLine("\n= Resumen de la Venta =\n");
                 Console.WriteLine($"Subtotal: $ {sale.Subtotal}");
                 Console.WriteLine($"Descuento total: $ {sale.TotalDiscount}");
                 Console.WriteLine($"Impuestos IVA {(sale.Taxes - 1) * 100}%");
