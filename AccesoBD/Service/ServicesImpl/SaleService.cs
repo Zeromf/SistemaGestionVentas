@@ -12,7 +12,6 @@ namespace SistemaGestionVentas.Service
     {
         private readonly IContextDB _contextoDB;
         private readonly ISaleCalculatorService _saleCalculatorService;
-
         public SaleService(ISaleCalculatorService saleCalculatorService, IContextDB contextoDB)
         {
             _saleCalculatorService = saleCalculatorService;

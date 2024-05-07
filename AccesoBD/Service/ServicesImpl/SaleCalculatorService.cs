@@ -3,6 +3,7 @@ using SistemaGestionVentasTP1.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using View.Menu_Opcion;
 
 namespace SistemaGestionVentas.Service
 {
@@ -14,66 +15,30 @@ namespace SistemaGestionVentas.Service
             CalculateSaleDetails(List<(Product product, int quantity)> products)
         {
             Console.Clear();
-            Console.WriteLine("¿Desea ver el detalle de los productos? (Si/No)");
-            string response = Console.ReadLine();
 
-            if (response.ToLower() == "si")
+            ImprimirDetallesVentas.ImprimirDetalles(products);
+          
+            
+            decimal subtotal = 0;
+            decimal totalDiscount = 0;
+            decimal totalPay = 0;
+
+            foreach (var (product, quantity) in products)
             {
-                // Mostrar detalle de los productos
-                int contador = 1;
-                foreach (var (product, quantity) in products)
+                if (product != null)
                 {
-                    Console.WriteLine($"Producto{contador}: {product.Name}");
-                    Console.WriteLine($"Precio: {product.Price:C}");
-                    Console.WriteLine($"Cantidad: {quantity}");
-                    Console.WriteLine($"Descuento: ({product.Discount:F2}%)");
-
-                    Console.WriteLine("-----------------------------");
-
-                    contador++;
+                    decimal discountedPrice = product.Price - (product.Price * (product.Discount / 100.0m));
+                    subtotal += product.Price * quantity;
+                    totalDiscount += Math.Round((product.Price * quantity) - (discountedPrice * quantity), 2);
                 }
+                totalPay = Math.Round(((subtotal - totalDiscount) * Constantes.Taxes), 2);
+
             }
-            else
-            {
-                Console.WriteLine("-----------------------------");
-            }
-
-            // Calcular subtotal, descuento total y total de la venta basado en productos seleccionados
-            decimal subtotal = CalculateSubtotal(products); 
-            decimal totalDiscount = subtotal * (CalculateTotalDiscount(products)/100);
-            decimal taxes = Constantes.Taxes;
-            decimal totalPayTerm = subtotal - totalDiscount;
-
-            decimal totalPay = totalPayTerm + (totalDiscount*(taxes/100));
-
-            // Mostrar importe total, subtotal y descuento
-            Console.WriteLine($"Subtotal: {subtotal:C}");
-            Console.WriteLine($"Descuento:({CalculateTotalDiscount(products):F2}%)");
-            Console.WriteLine($"Importe Total: {totalPay:C}");
+                // Mostrar importe total, subtotal y descuento
+                ImprimirDetallesVentas.ImprimirTotalPay(subtotal, totalDiscount,totalPay);
 
             return (subtotal, totalDiscount, totalPay);
         }
-
-        private decimal CalculateSubtotal(List<(Product product, int quantity)> products)
-        {
-            decimal subtotal = 0;
-            foreach (var (product, quantity) in products)
-            {
-                subtotal += product.Price * quantity;
-            }
-            return subtotal;
-        }
-
-        private decimal CalculateTotalDiscount(List<(Product product, int quantity)> products)
-        {
-            decimal totalDiscount = 0;
-            foreach (var (product, quantity) in products)
-            {
-                totalDiscount += product.Discount * quantity;
-            }
-            return totalDiscount;
-        }
-
 
     }
 }
