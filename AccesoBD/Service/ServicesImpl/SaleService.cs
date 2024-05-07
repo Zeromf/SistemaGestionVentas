@@ -5,8 +5,6 @@ using SistemaGestionVentasTP1.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SistemaGestionVentas.Service
 {
@@ -14,7 +12,6 @@ namespace SistemaGestionVentas.Service
     {
         private readonly IContextDB _contextoDB;
         private readonly ISaleCalculatorService _saleCalculatorService;
-
         public SaleService(ISaleCalculatorService saleCalculatorService, IContextDB contextoDB)
         {
             _saleCalculatorService = saleCalculatorService;
@@ -22,12 +19,12 @@ namespace SistemaGestionVentas.Service
 
         }
 
-        public void RegisterSale(IList<Product> Products, Sale sale, List<Product> productosSeleccionados)
+        public void RegisterSale(IList<Product> Products, Sale sale, List<(Product product, int quantity)> productosSeleccionados)
         {
             // Utilizamos el servicio de cálculo de venta para obtener los detalles de la venta
             var saleDetails = _saleCalculatorService.CalculateSaleDetails(productosSeleccionados);
 
-            //Calcular venta
+            // Calcular venta
             var newSale = new Sale
             {
                 TotalPay = saleDetails.totalPay,
@@ -39,9 +36,9 @@ namespace SistemaGestionVentas.Service
 
             newSale.SaleProduct = new List<SaleProduct>();
 
-            foreach (var singleProduct in productosSeleccionados)
+            foreach (var selectedProduct in productosSeleccionados)
             {
-                var product = Products.FirstOrDefault(p => p.ProductId == singleProduct.ProductId);
+                var product = Products.FirstOrDefault(p => p.ProductId == selectedProduct.product.ProductId);
 
                 if (product != null)
                 {
@@ -49,14 +46,14 @@ namespace SistemaGestionVentas.Service
 
                     if (existingProduct != null)
                     {
-                        existingProduct.Quantity++;
+                        existingProduct.Quantity += selectedProduct.quantity;
                     }
                     else
                     {
                         var saleProduct = new SaleProduct
                         {
                             ProductId = product.ProductId,
-                            Quantity = 1, // cantidad producto empieza en 1 por defecto     
+                            Quantity = selectedProduct.quantity,
                             Price = product.Price,
                             Discount = product.Discount
                         };

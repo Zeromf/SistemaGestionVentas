@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SistemaGestionVentasTP1.Model
 {
@@ -12,6 +8,7 @@ namespace SistemaGestionVentasTP1.Model
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [StringLength(100)]
         public int CategoryId { get; set; }
         public string Name { get; set; }
 

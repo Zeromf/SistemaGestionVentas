@@ -1,14 +1,10 @@
-﻿using SistemaGestionVentas.Const;
-using SistemaGestionVentas.Contexto;
+﻿using SistemaGestionVentas.Contexto;
 using SistemaGestionVentas.Service;
 using SistemaGestionVentasTP1.Model;
 using SistemaGestionVentasTP1.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace View.Menu
 {
@@ -18,7 +14,6 @@ namespace View.Menu
         private readonly ISaleService _saleService;
         private static IList<Product> productList;
         private static IList<Category> categorieList;
-
         private readonly IContextDB _contextDB;
         private static Sale sale = new Sale();
         private readonly ICategoryService _categoryService;
@@ -37,14 +32,14 @@ namespace View.Menu
             productList = _productService.GetAllProducts();
             if (!productList.Any())
             {
-                Console.WriteLine("No hay productos disponibles para la venta.");
+                Console.WriteLine("No hay productos disponibles.");
                 return;
             }
 
             categorieList = _categoryService.GetAllCategories();
             if (!categorieList.Any())
             {
-                Console.WriteLine("No hay categorias disponibles para la venta.");
+                Console.WriteLine("No hay categorías disponibles.");
                 return;
             }
 
@@ -54,9 +49,7 @@ namespace View.Menu
                 Console.WriteLine($"{i + 1}. {categorieList[i].Name}");
             }
 
-            Console.WriteLine("***********************************************************************************************************************");
-            Console.WriteLine("Seleccione el número de la categoría para ver los productos, o escriba 'fin' para volver al menu principal.");
-            Console.WriteLine("***********************************************************************************************************************");
+            Console.WriteLine("Seleccione el número de la categoría para ver los productos, o escriba 'fin' para volver al menú principal.");
             Console.Write("Opción: ");
 
             string inputCategory = Console.ReadLine();
@@ -68,8 +61,9 @@ namespace View.Menu
 
             if (int.TryParse(inputCategory, out int selectedCategoryIndex) && EsIndiceValido(selectedCategoryIndex, categorieList.Count))
             {
+                Console.Clear();
                 var selectedCategory = categorieList[selectedCategoryIndex - 1];
-                var productsInCategory = productList.Where(p => p.CategoryId == selectedCategory.CategoryId).ToList();
+                var productsInCategory = productList.Where(p => p.Category == selectedCategory.CategoryId).ToList();
 
                 Console.WriteLine($"Productos en la categoría '{selectedCategory.Name}':");
                 MostrarProductosFiltrados(productsInCategory);
@@ -82,18 +76,13 @@ namespace View.Menu
             }
         }
 
-        //Hace el calculo de la venta cuando selecciona el producto
         private void SeleccionProductos(List<Product> productsInCategory)
         {
-            List<Product> productosSeleccionados = new List<Product>();
+            List<(Product product, int quantity)> productosSeleccionados = new List<(Product product, int quantity)>();
 
             while (true)
             {
-                Console.WriteLine("***********************************************************************************************************************");
-                Console.WriteLine("Seleccione el número del producto o 'fin' para comprar. " +
-                    "Busque por nombre o '0' para volver, 'cancel' para eliminar último producto.");
-                Console.WriteLine("***********************************************************************************************************************");
-                Console.Write("Opción o nombre del producto: ");
+                Console.WriteLine("Seleccione el número del producto o 'fin' para comprar. '0' para volver, 'cancel' para eliminar último producto.");
 
                 string input = Console.ReadLine();
 
@@ -105,6 +94,7 @@ namespace View.Menu
 
                 if (input.ToLower() == "fin")
                 {
+                    Console.Clear();
                     break;
                 }
 
@@ -115,47 +105,66 @@ namespace View.Menu
                     return;
                 }
 
-                //Cancela el producto
                 if (input.ToLower() == "cancel" && productosSeleccionados.Any())
                 {
-                    var lastSelectedProduct = productosSeleccionados.Last();
-                    productosSeleccionados.Remove(lastSelectedProduct);
-                    Console.WriteLine($"Se ha cancelado la selección del producto: {lastSelectedProduct.Name}");
+                    productosSeleccionados.RemoveAt(productosSeleccionados.Count - 1);
+                    Console.WriteLine($"Se ha cancelado la selección del último producto.");
                     continue;
                 }
-                //Seleccion del producto por indice
+
                 if (int.TryParse(input, out int selectedIndex) && EsIndiceValido(selectedIndex, productsInCategory.Count))
                 {
                     var selectedProduct = productsInCategory[selectedIndex - 1];
-                    productosSeleccionados.Add(selectedProduct);
-                    Console.WriteLine($"Ha seleccionado el producto: {selectedProduct.Name}");
+                    int quantity = PedirCantidad(selectedProduct);
+                    if (quantity > 0)
+                    {
+                        productosSeleccionados.Add((selectedProduct, quantity));
+                        Console.WriteLine($"Ha seleccionado {quantity} unidad(es) del producto: {selectedProduct.Name}");
+                    }
                 }
                 else
                 {
-                    SeleccionarProductoPorNombre(input, productosSeleccionados);
+                    SeleccionarProductoPorNombre(input, productsInCategory, productosSeleccionados);
                 }
             }
 
-            Console.WriteLine("***********************************************************************************************************************");
             Console.WriteLine($"Ha seleccionado {productosSeleccionados.Count} producto(s) para la venta.");
-            Console.WriteLine("***********************************************************************************************************************");
             RegistrarVenta(productosSeleccionados);
         }
-
+        private static int PedirCantidad(Product product)
+        {
+            int quantity = 0;
+            while (true)
+            {
+                Console.Write($"Ingrese la cantidad de {product.Name} que desea agregar a la venta: ");
+                if (int.TryParse(Console.ReadLine(), out quantity))
+                {
+                    if (quantity <= 0)
+                    {
+                        Console.WriteLine("La cantidad debe ser un número entero positivo.");
+                        continue;
+                    }
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Entrada inválida. Por favor, ingrese un número entero positivo.");
+                }
+            }
+            return quantity;
+        }
         private static bool EsIndiceValido(int selectedIndex, int maxIndex)
         {
             return selectedIndex >= 1 && selectedIndex <= maxIndex;
         }
 
-        // Filtrar productos por nombre
-        private static void SeleccionarProductoPorNombre(string input, List<Product> productosSeleccionados)
+        private static void SeleccionarProductoPorNombre(string input, List<Product> productList, List<(Product product, int quantity)> productosSeleccionados)
         {
             var filteredProducts = productList.Where(p => p.Name.ToLower().Contains(input.ToLower())).ToList();
 
             if (filteredProducts.Any())
             {
                 MostrarProductosFiltrados(filteredProducts);
-
                 SeleccionarProductoFiltrado(filteredProducts, productosSeleccionados);
             }
             else
@@ -163,6 +172,7 @@ namespace View.Menu
                 Console.WriteLine("No se encontraron productos con ese nombre.");
             }
         }
+
 
         private static void MostrarProductosFiltrados(List<Product> filteredProducts)
         {
@@ -173,14 +183,18 @@ namespace View.Menu
             }
         }
 
-        private static void SeleccionarProductoFiltrado(List<Product> filteredProducts, List<Product> productosSeleccionados)
+        private static void SeleccionarProductoFiltrado(List<Product> filteredProducts, List<(Product product, int quantity)> productosSeleccionados)
         {
             Console.Write("Seleccione el número del producto que desea comprar: ");
             if (int.TryParse(Console.ReadLine(), out int selectedByNameIndex) && EsIndiceValido(selectedByNameIndex, filteredProducts.Count))
             {
                 var selectedProduct = filteredProducts[selectedByNameIndex - 1];
-                productosSeleccionados.Add(selectedProduct);
-                Console.WriteLine($"Ha seleccionado el producto: {selectedProduct.Name}");
+                int quantity = PedirCantidad(selectedProduct);
+                if (quantity > 0)
+                {
+                    productosSeleccionados.Add((selectedProduct, quantity));
+                    Console.WriteLine($"Ha seleccionado {quantity} unidad(es) del producto: {selectedProduct.Name}");
+                }
             }
             else
             {
@@ -188,21 +202,17 @@ namespace View.Menu
             }
         }
 
-        //Devuelve la venta realizada
-        private void RegistrarVenta(List<Product> productosSeleccionados)
+        private void RegistrarVenta(List<(Product product, int quantity)> productosSeleccionados)
         {
             try
             {
                 _saleService.RegisterSale(productList, sale, productosSeleccionados);
                 Console.WriteLine("La venta ha sido registrada correctamente.");
-               
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Ha ocurrido un error al intentar registrar la venta: " + ex.Message);
             }
-
-
         }
     }
 }

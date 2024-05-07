@@ -4,8 +4,6 @@ using SistemaGestionVentasTP1.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace View.Menu
 {
@@ -20,24 +18,24 @@ namespace View.Menu
         }
         public MenuListarProducto()
         {
- 
+
         }
 
         public void ListarProductos()
         {
 
-        //Traigo la lista de productos
-        IList<Product> productList = _productService.GetAllProducts();
-        //Traigo la lista de Categorias
-        IList<Category> categoryList = _categoriaService.GetAllCategories();
+            //Traigo la lista de productos
+            IList<Product> productList = _productService.GetAllProducts();
+            //Traigo la lista de Categorias
+            IList<Category> categoryList = _categoriaService.GetAllCategories();
 
-        Console.WriteLine("Productos disponibles:");
+            Console.WriteLine("Productos disponibles:");
             for (int i = 0; i < productList.Count; i++)
             {
                 //Lista de todos los productos
                 Product product = productList[i];
                 //Compara la categoria id con la del producto ,si coincido lo trae
-                Category category = categoryList.FirstOrDefault(c => c.CategoryId == product.CategoryId);
+                Category category = categoryList.FirstOrDefault(c => c.CategoryId == product.Category);
                 // Verificar si se encontró la categoría
                 if (category != null)
                 {

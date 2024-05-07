@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SistemaGestionVentasTP1.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SistemaGestionVentas.Entity
 {
@@ -19,7 +14,7 @@ namespace SistemaGestionVentas.Entity
             entityBuilder.Property(v => v.Subtotal).IsRequired();
             entityBuilder.Property(v => v.TotalDiscount).IsRequired();
             entityBuilder.Property(v => v.TotalPay).IsRequired();
-            entityBuilder.HasMany(v => v.SaleProduct).WithOne(vp => vp.Sale);
+            entityBuilder.HasMany(v => v.SaleProduct).WithOne(vp => vp.sale);
 
         }
     }
