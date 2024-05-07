@@ -1,28 +1,40 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using SistemaGestionVentas.Contexto;
-using SistemaGestionVentas.Service;
-using SistemaGestionVentasTP1.Service;
-using View.Menu;
+﻿using Application.Interface.ICommand;
+using Application.Interface.IPrinter;
+using Application.Interface.IQuery;
+using Application.Interface.IService;
+using Application.Service;
+using Infraestructura.Persistence.Contexto;
+using Infraestructura.Query;
+using Infraestructure.Command;
+using Infraestructure.Controller;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Presentation.Menu;
+using Presentation.Printers;
 
-namespace SistemaGestionVentasTP1
+
+class Program
 {
-    class Program
+    static void Main()
     {
-        static void Main(string[] args)
-        {
-            var serviceProvider = new ServiceCollection()
-                .AddScoped<ISaleCalculatorService, SaleCalculatorService>()
-                .AddScoped<MenuPrincipal>()
-                .AddScoped<MenuListarProducto>()
-                .AddScoped<MenuRegistrarVenta>()
-                .AddScoped<IContextDB, ContextDB>()
-                .AddScoped<ISaleService, SaleService>()
-                .AddScoped<IProductService, ProductService>()
-                .AddScoped<ICategoryService, CategoryService>()
-                .BuildServiceProvider();
+        var builder = new HostBuilder()
+            .ConfigureServices((hostContext, services) =>
+            {
+                services.AddSingleton<ContextDB>();
+                services.AddTransient<IProductQuery, ProductQuery>();
+                services.AddTransient<IProductService, ProductService>();
+                services.AddTransient<ISaleService, SaleService>();
+                services.AddTransient<ISaleRepository, SaleRepository>();
+                services.AddScoped<ISalePrinter, SaleConsole>();
+                services.AddScoped<IProductPrinter, ProductConsole>();
+                services.AddScoped<ProductController>();
+                services.AddScoped<SaleController>();
+                services.AddScoped<Menu>();
+            });
 
-            MenuPrincipal menuPrincipal = serviceProvider.GetRequiredService<MenuPrincipal>();
-            menuPrincipal.ImprimirMenu();
-        }
+        var app = builder.Build();
+        var menu = app.Services.GetRequiredService<Menu>();
+        menu.ShowMenu();
+        app.Run();
     }
 }

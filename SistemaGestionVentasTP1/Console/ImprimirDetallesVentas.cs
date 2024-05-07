@@ -1,9 +1,6 @@
 ﻿using SistemaGestionVentasTP1.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace View.Menu_Opcion
 {
@@ -35,8 +32,8 @@ namespace View.Menu_Opcion
             {
                 Console.WriteLine("-----------------------------");
             }
-        }  
-        
+        }
+
         public static void ImprimirTotalPay(decimal subtotal, decimal totalDiscount, decimal totalPay)
         {
             Console.WriteLine($"Subtotal: {subtotal:C}");

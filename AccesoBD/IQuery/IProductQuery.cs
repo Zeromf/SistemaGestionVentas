@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 
-namespace Application.Interface.IService
+namespace Application.Interface.IQuery
 {
-    public interface IProductService
+    public interface IProductQuery
     {
         public List<Product> GetListProducts();
         public Product GetProductById(Guid id);

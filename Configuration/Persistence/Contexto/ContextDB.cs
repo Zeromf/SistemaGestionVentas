@@ -2,7 +2,7 @@
 using SistemaGestionVentas.Entity;
 using SistemaGestionVentasTP1.Model;
 
-namespace SistemaGestionVentas.Contexto
+namespace Infraestructura.Persistence.Contexto
 {
     public class ContextDB : DbContext, IContextDB
 
@@ -43,7 +43,7 @@ namespace SistemaGestionVentas.Contexto
         //Creo la base de datos si no existe
         public bool EnsuredCreated()
         {
-            return this.Database.EnsureCreated();
+            return Database.EnsureCreated();
         }
     }
 

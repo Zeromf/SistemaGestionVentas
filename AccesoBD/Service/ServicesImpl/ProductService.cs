@@ -1,36 +1,28 @@
-﻿using SistemaGestionVentas.Contexto;
+﻿using Application.Interface.IQuery;
+using Application.Interface.IService;
 using SistemaGestionVentasTP1.Model;
-using SistemaGestionVentasTP1.Service;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 
-namespace SistemaGestionVentas.Service
+namespace Application.Service
 {
     public class ProductService : IProductService
     {
-        private readonly IContextDB _contextoDB;
+        private readonly IProductQuery _QueryProduct;
 
-        public ProductService()
+        public ProductService(IProductQuery QueryProduct)
         {
-        }
-        public ProductService(IContextDB contextoDB)
-        {
-            _contextoDB = contextoDB;
+            _QueryProduct = QueryProduct;
         }
 
-
-        public void AddProduct(Product Product)
+        public List<Product> GetListProducts()
         {
-            _contextoDB.Product.Add(Product);
-
-            _contextoDB.SaveChanges();
+            return _QueryProduct.GetListProducts();
         }
 
-        public List<Product> GetAllProducts()
+        public Product GetProductById(Guid id)
         {
-            return _contextoDB.Product.Select(x => x).ToList();
-
+            return _QueryProduct.GetProductById(id);
         }
-
     }
 }

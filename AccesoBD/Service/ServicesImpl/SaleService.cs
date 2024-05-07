@@ -1,70 +1,76 @@
-﻿using SistemaGestionVentas.Const;
-using SistemaGestionVentas.Contexto;
+﻿using Application.Interface.ICommand;
+using Application.Interface.IPrinter;
+using Application.Interface.IService;
 using SistemaGestionVentasTP1.Model;
-using SistemaGestionVentasTP1.Service;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
-namespace SistemaGestionVentas.Service
+namespace Application.Service
 {
     public class SaleService : ISaleService
     {
-        private readonly IContextDB _contextoDB;
-        private readonly ISaleCalculatorService _saleCalculatorService;
-        public SaleService(ISaleCalculatorService saleCalculatorService, IContextDB contextoDB)
-        {
-            _saleCalculatorService = saleCalculatorService;
-            _contextoDB = contextoDB;
+        private readonly ISaleRepository _saleCommand;
+        private readonly IProductService _product;
+        private readonly ISalePrinter _salePrinter;
 
+        public SaleService(ISaleRepository saleRepository, IProductService product, ISalePrinter printer)
+        {
+            _saleCommand = saleRepository;
+            _product = product;
+            _salePrinter = printer;
         }
-
-        public void RegisterSale(IList<Product> Products, Sale sale, List<(Product product, int quantity)> productosSeleccionados)
+        public bool GenerateSale(List<(Guid productId, int quantity)> productIdsAndQuantities)
         {
-            // Utilizamos el servicio de cálculo de venta para obtener los detalles de la venta
-            var saleDetails = _saleCalculatorService.CalculateSaleDetails(productosSeleccionados);
-
-            // Calcular venta
-            var newSale = new Sale
+            try
             {
-                TotalPay = saleDetails.totalPay,
-                Subtotal = saleDetails.subtotal,
-                TotalDiscount = saleDetails.totalDiscount,
-                Taxes = Constantes.Taxes,
+                var sale = CalculateSale(productIdsAndQuantities);
+
+                _saleCommand.AddSale(sale);
+                _salePrinter.SalePrint(sale);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al crear la venta: " + ex.Message);
+                return false;
+            }
+        }
+        public Sale CalculateSale(List<(Guid productId, int quantity)> productIdsAndQuantities)
+        {
+            var sale = new Sale
+            {
                 Date = DateTime.Now,
+                SaleProduct = new List<SaleProduct>()
             };
 
-            newSale.SaleProduct = new List<SaleProduct>();
+            decimal subtotal = 0;
+            decimal totalDiscount = 0;
 
-            foreach (var selectedProduct in productosSeleccionados)
+            foreach (var (productId, quantity) in productIdsAndQuantities)
             {
-                var product = Products.FirstOrDefault(p => p.ProductId == selectedProduct.product.ProductId);
-
+                var product = _product.GetProductById(productId);
                 if (product != null)
                 {
-                    var existingProduct = newSale.SaleProduct.FirstOrDefault(sp => sp.ProductId == product.ProductId);
+                    decimal discountedPrice = product.Price - (product.Price * (product.Discount / 100.0m));
+                    subtotal += product.Price * quantity;
+                    totalDiscount += Math.Round((product.Price * quantity) - (discountedPrice * quantity), 2);
 
-                    if (existingProduct != null)
+                    sale.SaleProduct.Add(new SaleProduct
                     {
-                        existingProduct.Quantity += selectedProduct.quantity;
-                    }
-                    else
-                    {
-                        var saleProduct = new SaleProduct
-                        {
-                            ProductId = product.ProductId,
-                            Quantity = selectedProduct.quantity,
-                            Price = product.Price,
-                            Discount = product.Discount
-                        };
-
-                        newSale.SaleProduct.Add(saleProduct);
-                    }
+                        ProductId = product.ProductId,
+                        Quantity = quantity,
+                        Price = product.Price,
+                        Discount = product.Discount
+                    });
                 }
             }
 
-            _contextoDB.Sale.Add(newSale);
-            _contextoDB.SaveChanges();
+            sale.Subtotal = subtotal;
+            sale.TotalDiscount = totalDiscount;
+            sale.Taxes = 1.21m;
+            sale.TotalPay = Math.Round(((subtotal - totalDiscount) * sale.Taxes), 2);
+
+            return sale;
         }
     }
 }

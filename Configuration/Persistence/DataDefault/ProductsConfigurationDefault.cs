@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SistemaGestionVentasTP1.Model;
-using System;
 
 namespace SistemaGestionVentas.Entity
 {

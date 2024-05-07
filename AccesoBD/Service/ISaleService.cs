@@ -1,12 +1,12 @@
 ﻿using SistemaGestionVentasTP1.Model;
+using System;
 using System.Collections.Generic;
 
-namespace SistemaGestionVentasTP1.Service
+namespace Application.Interface.IService
 {
     public interface ISaleService
     {
-        void RegisterSale(IList<Product> ProductL, Sale sale, List<(Product product, int quantity)> productosSeleccionados);
-
-
+        public bool GenerateSale(List<(Guid productId, int quantity)> productIdsAndQuantities);
+        public Sale CalculateSale(List<(Guid productId, int quantity)> productIdsAndQuantities);
     }
 }

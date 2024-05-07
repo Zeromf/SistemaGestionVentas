@@ -10,7 +10,7 @@ namespace SistemaGestionVentasTP1.Model
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid ProductId { get; set; }
-        
+
         public string Name { get; set; }
         public string Descripcion { get; set; }
         public decimal Price { get; set; }

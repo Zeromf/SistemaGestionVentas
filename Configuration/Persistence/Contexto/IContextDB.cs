@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SistemaGestionVentasTP1.Model;
 
-namespace SistemaGestionVentas.Contexto
+namespace Infraestructura.Persistence.Contexto
 {
     public interface IContextDB
     {
