@@ -10,13 +10,15 @@ namespace SistemaGestionVentasTP1.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ShoppingCardId { get; set; }
         public int Sale { get; set; }
-        public Guid ProductId { get; set; }
+        public Guid Product { get; set; }
         public int Quantity { get; set; }
         public decimal Price { get; set; }
         public decimal Discount { get; set; }
-        public virtual Sale sale { set; get; }
 
-        public virtual Product Product { set; get; }
+        public virtual Sale SaleName { set; get; }
+
+        public Product ProductName { get; set; }
+
 
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Application.Interface.ICommand;
 using Application.Interface.IPrinter;
 using Application.Interface.IService;
+using SistemaGestionVentas.Const;
 using SistemaGestionVentasTP1.Model;
 using System;
 using System.Collections.Generic;
@@ -9,13 +10,13 @@ namespace Application.Service
 {
     public class SaleService : ISaleService
     {
-        private readonly ISaleRepository _saleCommand;
+        private readonly ISaleRepository _saleRepository;
         private readonly IProductService _product;
         private readonly ISaleConsole _salePrinter;
 
         public SaleService(ISaleRepository saleRepository, IProductService product, ISaleConsole printer)
         {
-            _saleCommand = saleRepository;
+            _saleRepository = saleRepository;
             _product = product;
             _salePrinter = printer;
         }
@@ -25,7 +26,7 @@ namespace Application.Service
             {
                 var sale = CalculateSale(productIdsAndQuantities);
 
-                _saleCommand.AddSale(sale);
+                _saleRepository.AddSale(sale);
                 _salePrinter.SalePrint(sale);
                 return true;
             }
@@ -57,7 +58,7 @@ namespace Application.Service
 
                     sale.SaleProduct.Add(new SaleProduct
                     {
-                        ProductId = product.ProductId,
+                        Product = product.ProductId,
                         Quantity = quantity,
                         Price = product.Price,
                         Discount = product.Discount
@@ -67,7 +68,7 @@ namespace Application.Service
 
             sale.Subtotal = subtotal;
             sale.TotalDiscount = totalDiscount;
-            sale.Taxes = 1.21m;
+            sale.Taxes = Constantes.Taxes;
             sale.TotalPay = Math.Round(((subtotal - totalDiscount) * sale.Taxes), 2);
 
             return sale;

@@ -14,7 +14,7 @@ namespace SistemaGestionVentas.Entity
             entityBuilder.Property(v => v.Subtotal).IsRequired();
             entityBuilder.Property(v => v.TotalDiscount).IsRequired();
             entityBuilder.Property(v => v.TotalPay).IsRequired();
-            entityBuilder.HasMany(v => v.SaleProduct).WithOne(vp => vp.sale);
+            entityBuilder.HasMany(v => v.SaleProduct).WithOne(vp => vp.SaleName);
 
         }
     }

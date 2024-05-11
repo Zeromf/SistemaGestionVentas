@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infraestructura.Migrations
 {
     [DbContext(typeof(ContextDB))]
-    [Migration("20240507034406_init")]
+    [Migration("20240511184737_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -105,7 +105,7 @@ namespace Infraestructura.Migrations
                     b.Property<int>("Category")
                         .HasColumnType("int");
 
-                    b.Property<string>("Descripcion")
+                    b.Property<string>("Description")
                         .HasMaxLength(2147483647)
                         .HasColumnType("nvarchar(max)");
 
@@ -113,7 +113,7 @@ namespace Infraestructura.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
+                        .HasMaxLength(2147483647)
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -133,9 +133,9 @@ namespace Infraestructura.Migrations
                     b.HasData(
                         new
                         {
-                            ProductId = new Guid("87b03b8c-50c6-4fea-93d4-ed58ad21b3e3"),
+                            ProductId = new Guid("4d9f7a50-68c0-40d0-a72c-bb9cd99f1887"),
                             Category = 1,
-                            Descripcion = "Lavadora de carga frontal con capacidad XX kg y múltiples programas de lavado.",
+                            Description = "Lavadora de carga frontal con capacidad XX kg y múltiples programas de lavado.",
                             Discount = 25,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_2X_818355-MLU74163648935_012024-F.webp",
                             Name = "Lavadora de carga frontal",
@@ -143,9 +143,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("5907afbd-5a19-4e5c-ac20-e1ab0f23cf1e"),
+                            ProductId = new Guid("96704d21-f755-4c6e-8082-1835b5cdbfb3"),
                             Category = 1,
-                            Descripcion = "Licuadora de alta potencia con motor de XXXW y cuchillas de acero inoxidable.",
+                            Description = "Licuadora de alta potencia con motor de XXXW y cuchillas de acero inoxidable.",
                             Discount = 61,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_745773-MLA47575105862_092021-O.webp",
                             Name = "Licuadora de alta potencia",
@@ -153,9 +153,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("c39ca82b-e3a8-43b9-b1b7-73d4f646e878"),
+                            ProductId = new Guid("19817a03-b49a-48b4-9d68-ff0fac5bd8b2"),
                             Category = 1,
-                            Descripcion = "Horno eléctrico de convección con capacidad de XX litros y control digital.",
+                            Description = "Horno eléctrico de convección con capacidad de XX litros y control digital.",
                             Discount = 9,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_700777-MLU75436781292_042024-O.webp",
                             Name = "Horno eléctrico de convección",
@@ -163,9 +163,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("c781e7e5-26d1-4480-83f6-d37c4fad0a35"),
+                            ProductId = new Guid("c2e2f591-e363-4382-ae7a-d9645664a26e"),
                             Category = 1,
-                            Descripcion = "Aspiradora robotizada con sistema de mapeo inteligente y succión potente.",
+                            Description = "Aspiradora robotizada con sistema de mapeo inteligente y succión potente.",
                             Discount = 43,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_678901-MLU75358482641_032024-O.webp",
                             Name = "Aspiradora robotizada",
@@ -173,9 +173,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("ea5a79ee-9723-40d4-915a-1696b7c70a82"),
+                            ProductId = new Guid("8c1c3701-0780-482b-a1c8-307797746b6b"),
                             Category = 2,
-                            Descripcion = "Smartphone de última generación con pantalla XX pulgadas y cámara de XXMP.",
+                            Description = "Smartphone de última generación con pantalla XX pulgadas y cámara de XXMP.",
                             Discount = 0,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_816025-MLU72748491987_112023-O.webp",
                             Name = "Smartphone de última generación",
@@ -183,9 +183,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("ff9ff8f2-4b44-4737-b321-d9e93f1e5e5e"),
+                            ProductId = new Guid("f4852e57-2935-4aa5-ad4f-222a310bfdfc"),
                             Category = 2,
-                            Descripcion = "Inflador De Neumáticos Portátil X8",
+                            Description = "Inflador De Neumáticos Portátil X8",
                             Discount = 0,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_667807-MLU72649504918_112023-O.webp",
                             Name = "Inflador Portátil ultraligero",
@@ -193,9 +193,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("2950c60f-31a9-4f66-aadb-4db4fd006158"),
+                            ProductId = new Guid("6d9b5690-9a3b-4f72-9aab-375f49f71e8f"),
                             Category = 2,
-                            Descripcion = "Camara Digital Mirrorless Sony Alpha A6100 4k Wifi Sel1650.",
+                            Description = "Camara Digital Mirrorless Sony Alpha A6100 4k Wifi Sel1650.",
                             Discount = 0,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_659460-MLU72646998907_112023-O.webp",
                             Name = "Cámara digital réflex Sony",
@@ -203,9 +203,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("58d14fb5-5cba-447e-8f74-83f3e5f5f06b"),
+                            ProductId = new Guid("1eaf09c6-ce84-4f6f-825e-fdcf70e7ebf0"),
                             Category = 2,
-                            Descripcion = "Smart TV de 55 pulgadas con resolución 4K y sistema operativo XXX.",
+                            Description = "Smart TV de 55 pulgadas con resolución 4K y sistema operativo XXX.",
                             Discount = 0,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_2X_796079-MLU75556122361_042024-F.webp",
                             Name = "Smart TV de 55 pulgadas",
@@ -213,9 +213,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("b5fca9e7-4ffd-4bc4-be4e-94ea30b39e72"),
+                            ProductId = new Guid("0d18242c-9b24-42a4-9d71-9ffa3e8c958f"),
                             Category = 2,
-                            Descripcion = "Auriculares inalámbricos con cancelación de ruido y batería de larga duración.",
+                            Description = "Auriculares inalámbricos con cancelación de ruido y batería de larga duración.",
                             Discount = 0,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_938092-MLA45480677826_042021-O.webp",
                             Name = "Auriculares inalámbricos con cancelación de ruido",
@@ -223,9 +223,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("2d4907ea-2384-4219-aaa0-45b756b5d682"),
+                            ProductId = new Guid("e1e6fc9e-5d92-4a26-94ae-ef1af3af5d27"),
                             Category = 2,
-                            Descripcion = "Sony PlayStation 5 825GB God of War Ragnarok Bundle color blanco y negro.",
+                            Description = "Sony PlayStation 5 825GB God of War Ragnarok Bundle color blanco y negro.",
                             Discount = 11,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_700033-MLA69689802995_052023-O.webp",
                             Name = "Sony Playstation 5",
@@ -233,9 +233,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("870cb16e-68c2-4616-80ee-281b8ca8e463"),
+                            ProductId = new Guid("2b12f33c-a11f-4692-8f1c-2f6800394b7a"),
                             Category = 3,
-                            Descripcion = "Acolchado edredón 2 plazas y 1/2 (2 plazas y media) liso reversible Abrigado invierno.",
+                            Description = "Acolchado edredón 2 plazas y 1/2 (2 plazas y media) liso reversible Abrigado invierno.",
                             Discount = 7,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_748192-MLA53582903699_022023-O.webp",
                             Name = "Acolchados Lisos 2 1/2 Plazas Reversible",
@@ -243,9 +243,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("8a2b0893-57fc-438f-94ae-97155e721a7d"),
+                            ProductId = new Guid("c973afcb-7b99-420e-8187-dc7f761b53c6"),
                             Category = 3,
-                            Descripcion = "Cartera Cuero Genuino Reptil Bolso Mochila Mujer Cierre.",
+                            Description = "Cartera Cuero Genuino Reptil Bolso Mochila Mujer Cierre.",
                             Discount = 0,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_2X_869901-MLA54619063288_032023-F.webp",
                             Name = "Bolso de cuero genuino",
@@ -253,9 +253,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("cc4bdfff-c059-4caf-9130-ed04b4bdc8a1"),
+                            ProductId = new Guid("8250654d-da6c-4e18-80b0-ca85dec932ec"),
                             Category = 3,
-                            Descripcion = "Anteojos de sol polarizados Vulk Reporter en color sblk/s10.",
+                            Description = "Anteojos de sol polarizados Vulk Reporter en color sblk/s10.",
                             Discount = 20,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_604456-MLA48170692330_112021-O.webp",
                             Name = "Lente De Sol Vulk",
@@ -263,9 +263,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("a372f968-6ddd-47b4-a321-fc2a172d5ea6"),
+                            ProductId = new Guid("faf39cc2-2c7e-42aa-b52a-96c71936b526"),
                             Category = 3,
-                            Descripcion = "Smartwatch Reloj Inteligente Dt N0.1 Dt3 Mate Doble Malla.",
+                            Description = "Smartwatch Reloj Inteligente Dt N0.1 Dt3 Mate Doble Malla.",
                             Discount = 13,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_2X_748519-MLA72356877039_102023-F.webp",
                             Name = "Reloj inteligente elegante",
@@ -273,9 +273,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("2db9b3de-41cb-4f16-a292-10e2161b1f76"),
+                            ProductId = new Guid("45f00bf3-8a7b-4d0b-8a26-28a61aaeb59c"),
                             Category = 3,
-                            Descripcion = "Zapatillas Puma Caven 2.0 Blanca",
+                            Description = "Zapatillas Puma Caven 2.0 Blanca",
                             Discount = 0,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_994477-MLA74957384571_032024-O.webp",
                             Name = "Zapatillas deportivas de moda",
@@ -283,9 +283,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("d93aa009-94d3-4db0-96d7-cd44a7da5b32"),
+                            ProductId = new Guid("798a1105-e44e-4b8c-ae88-4b9df0c0592f"),
                             Category = 4,
-                            Descripcion = "Juego De Sabanas Queen 400hilos 100% Algodon.",
+                            Description = "Juego De Sabanas Queen 400hilos 100% Algodon.",
                             Discount = 25,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_829765-MLA73477087898_122023-O.webp",
                             Name = "Juego de sábanas de algodón egipcio",
@@ -293,9 +293,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("ec154df9-3ac1-43b0-9444-c11fd177150c"),
+                            ProductId = new Guid("7b714cd8-e52e-4e98-a51b-a19a1758f1fc"),
                             Category = 4,
-                            Descripcion = "Jarrón de cerámica artesanal con acabado brillante y diseño moderno.",
+                            Description = "Jarrón de cerámica artesanal con acabado brillante y diseño moderno.",
                             Discount = 5,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_814774-MLA73709732208_012024-O.webp",
                             Name = "Jarrón de cerámica artesanal",
@@ -303,9 +303,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("0f36b6ce-219e-4988-a648-f529a5ed935c"),
+                            ProductId = new Guid("3e0cafbc-6750-4e81-a0b6-e3737f97cddb"),
                             Category = 4,
-                            Descripcion = "Lámpara de pie moderna con base de acero inoxidable y pantalla ajustable.",
+                            Description = "Lámpara de pie moderna con base de acero inoxidable y pantalla ajustable.",
                             Discount = 0,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_2X_929599-MLA54852993202_042023-F.webp",
                             Name = "Lámpara de pie moderna",
@@ -313,9 +313,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("c96134dd-71f1-490b-86f3-d98142b074c4"),
+                            ProductId = new Guid("a2b372cc-2457-463d-a968-4060cc9caba0"),
                             Category = 4,
-                            Descripcion = "Juego de cuchillos de cocina de alta calidad con mango ergonómico y hoja de acero inoxidable.",
+                            Description = "Juego de cuchillos de cocina de alta calidad con mango ergonómico y hoja de acero inoxidable.",
                             Discount = 5,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_910185-MLA50009263187_052022-O.webp",
                             Name = "Juego de cuchillos de cocina de alta calidad",
@@ -323,9 +323,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("2be8a358-68c8-4e0b-b125-251caa4a0718"),
+                            ProductId = new Guid("e9fb7c40-588e-42ea-92aa-0fd570ef25de"),
                             Category = 5,
-                            Descripcion = "Set de maquillaje profesional con paleta de sombras, labiales y brochas.",
+                            Description = "Set de maquillaje profesional con paleta de sombras, labiales y brochas.",
                             Discount = 28,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_910185-MLA50009263187_052022-O.webp",
                             Name = "Set de maquillaje profesional",
@@ -333,9 +333,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("621d1be7-b8b0-493b-980c-7af55bd852e5"),
+                            ProductId = new Guid("aa6d01b2-8a84-4cc1-aed5-ac41d689a670"),
                             Category = 5,
-                            Descripcion = "Máquina de afeitar eléctrica de precisión con cabezales flotantes y recortador de precisión.",
+                            Description = "Máquina de afeitar eléctrica de precisión con cabezales flotantes y recortador de precisión.",
                             Discount = 0,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_870569-MLA74827280389_022024-O.webp",
                             Name = "Máquina de afeitar eléctrica de precisión",
@@ -343,9 +343,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("f0f7cf7b-4603-4262-b198-4d0ceb4d154e"),
+                            ProductId = new Guid("68da8533-c425-4e3e-8a0f-87f1ba5794c2"),
                             Category = 5,
-                            Descripcion = "Serum facial rejuvenecedor con ácido hialurónico y vitaminas antioxidantes.",
+                            Description = "Serum facial rejuvenecedor con ácido hialurónico y vitaminas antioxidantes.",
                             Discount = 0,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_918096-MLA74134687068_012024-O.webp",
                             Name = "Serum facial rejuvenecedor",
@@ -353,9 +353,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("ee6d142b-557f-441a-acce-dd6cbd80a201"),
+                            ProductId = new Guid("ae9f275c-2af5-4d3c-a072-8938082eed5b"),
                             Category = 5,
-                            Descripcion = "Cepillo de dientes eléctrico recargable con temporizador y cabezales intercambiables.",
+                            Description = "Cepillo de dientes eléctrico recargable con temporizador y cabezales intercambiables.",
                             Discount = 24,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_999356-MLU74959566341_032024-O.webp",
                             Name = "Cepillo de dientes eléctrico recargable",
@@ -363,9 +363,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("c5517268-bf05-4827-b838-8646e4e22445"),
+                            ProductId = new Guid("d32d73a8-4f6e-471f-875f-1b05e71d71e9"),
                             Category = 5,
-                            Descripcion = "Kit de manicura y pedicura con lima, cortaúñas y herramientas de precisión.",
+                            Description = "Kit de manicura y pedicura con lima, cortaúñas y herramientas de precisión.",
                             Discount = 60,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_2X_864195-MLU75358350003_032024-F.webp",
                             Name = "Kit de manicura y pedicura",
@@ -373,9 +373,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("edef87a4-abaa-417c-a838-07bab0655cb3"),
+                            ProductId = new Guid("3ce4aab8-835b-4eed-9141-e7b135ab44a5"),
                             Category = 6,
-                            Descripcion = "Bicicleta de montaña todo terreno con cuadro de aluminio y cambios Shimano.",
+                            Description = "Bicicleta de montaña todo terreno con cuadro de aluminio y cambios Shimano.",
                             Discount = 15,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_2X_819576-MLU75591901591_042024-F.webp",
                             Name = "Bicicleta de montaña todo terreno",
@@ -383,9 +383,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("f18bb132-6862-4de8-af5c-1a0ed04dc587"),
+                            ProductId = new Guid("e6dc21d6-5d34-4246-87c0-31f7101fb40c"),
                             Category = 6,
-                            Descripcion = "Tienda de campaña para 4 personas con doble techo y sistema de ventilación.",
+                            Description = "Tienda de campaña para 4 personas con doble techo y sistema de ventilación.",
                             Discount = 25,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_2X_853020-MLU74646955786_022024-F.webp",
                             Name = "Tienda de campaña para 4 personas",
@@ -393,9 +393,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("2bfb0b83-552e-41cb-b095-c57a58fe296e"),
+                            ProductId = new Guid("6190334e-fb56-4403-a4f9-9d23981f556b"),
                             Category = 6,
-                            Descripcion = "Raquetas de tenis de alta gama con tecnología de absorción de impactos y empuñadura ergonómica.",
+                            Description = "Raquetas de tenis de alta gama con tecnología de absorción de impactos y empuñadura ergonómica.",
                             Discount = 0,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_2X_674284-MLU74132469460_012024-F.webp",
                             Name = "Raquetas de tenis de alta gama",
@@ -403,9 +403,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("4a6c87eb-1902-4f2b-a0eb-2bd7d1791985"),
+                            ProductId = new Guid("4ab8a007-595c-44e5-b3b6-9c5c63fd04ae"),
                             Category = 6,
-                            Descripcion = "Balón de fútbol oficial con diseño aerodinámico y cubierta de cuero sintético.",
+                            Description = "Balón de fútbol oficial con diseño aerodinámico y cubierta de cuero sintético.",
                             Discount = 0,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_981675-MLU75436946294_042024-O.webp",
                             Name = "Balón de fútbol oficial",
@@ -413,9 +413,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("045277c5-7864-4f7a-b288-6216bf3c9dc7"),
+                            ProductId = new Guid("cde5fd6c-9ce5-4029-b9d0-48965c1ef1f8"),
                             Category = 7,
-                            Descripcion = "Set de construcción de bloques de LEGO con XX piezas y figuras coleccionables.",
+                            Description = "Set de construcción de bloques de LEGO con XX piezas y figuras coleccionables.",
                             Discount = 0,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_688616-MLA70719693003_072023-O.webp",
                             Name = "Set de construcción de bloques de LEGO",
@@ -423,9 +423,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("a04f70af-ab13-4513-83da-b16f05cf621d"),
+                            ProductId = new Guid("6a4f86a1-d3b0-41bf-bc23-717d00a7a23f"),
                             Category = 7,
-                            Descripcion = "Muñeca interactiva con funciones inteligentes y accesorios intercambiables.",
+                            Description = "Muñeca interactiva con funciones inteligentes y accesorios intercambiables.",
                             Discount = 0,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_825422-MLA48732174078_012022-O.webp",
                             Name = "Muñeca interactiva con funciones inteligentes",
@@ -433,9 +433,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("2d673e79-3991-4a55-80d1-f4bd3988cef6"),
+                            ProductId = new Guid("b653e94a-e9f2-4cb8-95aa-5cbf71eed639"),
                             Category = 7,
-                            Descripcion = "Rompecabezas de 1000 piezas con imagen de paisaje panorámico.",
+                            Description = "Rompecabezas de 1000 piezas con imagen de paisaje panorámico.",
                             Discount = 0,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_681463-MLU72607866767_102023-O.webp",
                             Name = "Rompecabezas de 1000 piezas",
@@ -443,9 +443,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("62dd17f4-2b66-4cf3-ae05-6f54de7cef78"),
+                            ProductId = new Guid("87a6abab-4575-429d-8301-e7053e2eae27"),
                             Category = 7,
-                            Descripcion = "Juego de mesa estratégico con tablero plegable y fichas de madera.",
+                            Description = "Juego de mesa estratégico con tablero plegable y fichas de madera.",
                             Discount = 0,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_818301-MLU72732448659_112023-O.webp",
                             Name = "Juego de mesa de Ajedrez",
@@ -453,9 +453,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("fed20ea0-c05c-40a3-9eac-fd8fe660fef7"),
+                            ProductId = new Guid("cdd1b483-338c-46e3-823c-81307792bd7d"),
                             Category = 8,
-                            Descripcion = "Caja de vinos seleccionados con variedad de cepas y añejamiento mínimo de X años.",
+                            Description = "Caja de vinos seleccionados con variedad de cepas y añejamiento mínimo de X años.",
                             Discount = 0,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_2X_756320-MLU70634026054_072023-F.webp",
                             Name = "Caja de vinos seleccionados",
@@ -463,9 +463,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("e468b6d7-d9b9-4b14-ac9f-a2b90fb07f31"),
+                            ProductId = new Guid("33b4fc6c-f9b7-4038-ba05-25a54c06dc86"),
                             Category = 8,
-                            Descripcion = "Cesta de frutas frescas de temporada con selección de frutas maduras y jugosas.",
+                            Description = "Cesta de frutas frescas de temporada con selección de frutas maduras y jugosas.",
                             Discount = 17,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_890748-MLA73914321216_012024-O.webp",
                             Name = "Cesta de frutas frescas de temporada",
@@ -473,9 +473,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("99e6f4ab-d849-4d57-9435-82b4aed8146f"),
+                            ProductId = new Guid("8730ede2-0e2b-445e-b26e-09f532b691f1"),
                             Category = 8,
-                            Descripcion = "Set de gourmet de chocolates belgas con variedad de sabores y presentación elegante.",
+                            Description = "Set de gourmet de chocolates belgas con variedad de sabores y presentación elegante.",
                             Discount = 0,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_745130-MLA51091920365_082022-O.webp",
                             Name = "Set de gourmet de chocolates belgas",
@@ -483,9 +483,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("194cb7f0-cc75-4bc7-ae4a-dabf348a62a0"),
+                            ProductId = new Guid("d29d7d1e-1b2b-43d6-bf23-a8ac57c02112"),
                             Category = 8,
-                            Descripcion = "Cafetera espresso automática con sistema de preparación rápida y vaporizador integrado.",
+                            Description = "Cafetera espresso automática con sistema de preparación rápida y vaporizador integrado.",
                             Discount = 7,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_773299-MLU72576428368_112023-O.webp",
                             Name = "Cafetera espresso automática",
@@ -493,9 +493,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("6bdd82b3-e90d-4023-9364-d4619f98f5fa"),
+                            ProductId = new Guid("3e6c6a49-fcab-49db-87e8-8a1f9bd1cbd6"),
                             Category = 9,
-                            Descripcion = "Bestseller del New York Times en formato papel o digital.",
+                            Description = "Bestseller del New York Times en formato papel o digital.",
                             Discount = 0,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_737839-MLA52392671527_112022-O.webp",
                             Name = "Bestseller del New York Times",
@@ -503,9 +503,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("3b056c7d-ead4-4513-8ee8-cb6e5fcb812a"),
+                            ProductId = new Guid("ec549bc2-4a53-48cb-8f4c-103fdaea0fb1"),
                             Category = 9,
-                            Descripcion = "Colección de clásicos de la literatura mundial en edición especial.",
+                            Description = "Colección de clásicos de la literatura mundial en edición especial.",
                             Discount = 6,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_869243-MLU74994926858_032024-O.webp",
                             Name = "Colección de clásicos de la literatura mundial",
@@ -513,9 +513,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("cc872229-0c18-47db-842f-50d65ba3ab88"),
+                            ProductId = new Guid("2aa3918f-cfd7-4d49-9b80-340956b6ee47"),
                             Category = 9,
-                            Descripcion = "Atlas geográfico interactivo con mapas detallados y funciones multimedia.",
+                            Description = "Atlas geográfico interactivo con mapas detallados y funciones multimedia.",
                             Discount = 0,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_789389-MLA42259351508_062020-O.webp",
                             Name = "Atlas geográfico interactivo",
@@ -523,9 +523,9 @@ namespace Infraestructura.Migrations
                         },
                         new
                         {
-                            ProductId = new Guid("4a49dc52-7c1c-4835-8544-72eec788d8cc"),
+                            ProductId = new Guid("bd8980ec-7d2e-49e9-bdbd-de96965bc641"),
                             Category = 9,
-                            Descripcion = "Kit de experimentos científicos para niños con materiales seguros y guía de actividades.",
+                            Description = "Kit de experimentos científicos para niños con materiales seguros y guía de actividades.",
                             Discount = 0,
                             ImageUrl = "https://http2.mlstatic.com/D_NQ_NP_2X_924058-MLA50987231299_082022-F.webp",
                             Name = "Kit de experimentos científicos para niños",
@@ -575,7 +575,7 @@ namespace Infraestructura.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid>("ProductId")
+                    b.Property<Guid>("Product")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Quantity")
@@ -584,14 +584,11 @@ namespace Infraestructura.Migrations
                     b.Property<int>("Sale")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SaleId")
-                        .HasColumnType("int");
-
                     b.HasKey("ShoppingCardId");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("Product");
 
-                    b.HasIndex("SaleId");
+                    b.HasIndex("Sale");
 
                     b.ToTable("SaleProduct");
                 });
@@ -609,19 +606,21 @@ namespace Infraestructura.Migrations
 
             modelBuilder.Entity("SistemaGestionVentasTP1.Model.SaleProduct", b =>
                 {
-                    b.HasOne("SistemaGestionVentasTP1.Model.Product", "Product")
+                    b.HasOne("SistemaGestionVentasTP1.Model.Product", "ProductName")
                         .WithMany("product")
-                        .HasForeignKey("ProductId")
+                        .HasForeignKey("Product")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SistemaGestionVentasTP1.Model.Sale", "sale")
+                    b.HasOne("SistemaGestionVentasTP1.Model.Sale", "SaleName")
                         .WithMany("SaleProduct")
-                        .HasForeignKey("SaleId");
+                        .HasForeignKey("Sale")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Product");
+                    b.Navigation("ProductName");
 
-                    b.Navigation("sale");
+                    b.Navigation("SaleName");
                 });
 
             modelBuilder.Entity("SistemaGestionVentasTP1.Model.Category", b =>

@@ -28,7 +28,7 @@ namespace Infraestructura.Persistence.Contexto
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //Configuro las relaciones entre las tablas de category, product , saleproduct y sale
+            //Configuro las relaciones entre las tablas de category, product , saleproduct y SaleName
             modelBuilder.ApplyConfiguration(new CategoryConfig());
             modelBuilder.ApplyConfiguration(new ProductoConfig());
             modelBuilder.ApplyConfiguration(new SaleConfig());

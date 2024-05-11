@@ -16,7 +16,7 @@ namespace Presentation.Printers
                 Console.WriteLine("Productos:");
                 foreach (var saleProduct in sale.SaleProduct)
                 {
-                    Console.WriteLine($"- {saleProduct.Quantity} unidades de {saleProduct.Product.Name} a ${saleProduct.Price} cada una (descuento: {saleProduct.Discount}%)");
+                    Console.WriteLine($"- {saleProduct.Quantity} unidades de {saleProduct.ProductName.Name} a ${saleProduct.Price} cada una (descuento: {saleProduct.Discount}%)");
                 }
 
                 SaleDetail(sale);

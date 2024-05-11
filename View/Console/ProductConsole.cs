@@ -37,7 +37,7 @@ namespace Presentation.Printers
             {
                 Console.WriteLine($"ID: {product.ProductId}");
                 Console.WriteLine($"Nombre: {product.Name}");
-                Console.WriteLine($"Descripción: {product.Descripcion}");
+                Console.WriteLine($"Descripción: {product.Description}");
                 Console.WriteLine($"Precio: {product.Price}");
                 Console.WriteLine($"Categoría: {product.category.Name}");
                 Console.WriteLine($"Descuento: {product.Discount} %");
