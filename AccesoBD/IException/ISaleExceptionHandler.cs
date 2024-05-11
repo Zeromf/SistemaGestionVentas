@@ -10,7 +10,9 @@ namespace Aplicacion.IException
     public interface ISaleExceptionHandler
     {
 
-        public bool HandleException(Exception ex);
+        public bool HandleSaleException(Exception ex);
+
+        public bool HandleProductException(Exception ex);
 
     }
 }

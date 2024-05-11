@@ -1,4 +1,5 @@
-﻿using Application.Interface.IPrinter;
+﻿using Aplicacion.IException;
+using Application.Interface.IPrinter;
 using Application.Interface.IService;
 
 
@@ -8,11 +9,13 @@ namespace Infraestructure.Controller
     {
         private readonly IProductService _productService;
         private readonly IProductPrinter _productPrinter;
+        private readonly ISaleExceptionHandler _saleExceptionHandler;
 
-        public ProductController(IProductService productService, IProductPrinter productPrinter)
+        public ProductController(IProductService productService, IProductPrinter productPrinter, ISaleExceptionHandler saleExceptionHandler)
         {
             _productService = productService;
             _productPrinter = productPrinter;
+            _saleExceptionHandler = saleExceptionHandler;
         }
 
         public void ListarProductos()
@@ -27,7 +30,7 @@ namespace Infraestructure.Controller
             }
             catch (Exception ex)
             {
-                Console.WriteLine("\nERROR: Ocurrió un error al listar. Detalles: " + ex.Message);
+                _saleExceptionHandler.HandleProductException(ex);
             }
         }
     }

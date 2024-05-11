@@ -35,7 +35,7 @@ namespace Application.Service
             }
             catch (Exception ex)
             {
-                return _saleExceptionHandler.HandleException(ex);
+                return _saleExceptionHandler.HandleSaleException(ex);
             }
         }
         public Sale CalculateSale(List<(Guid productId, int quantity)> productIdsAndQuantities)
