@@ -16,15 +16,9 @@ namespace Infraestructure.Command
 
         public void AddSale(Sale sale)
         {
-            try
-            {
-                _dbContext.Sale.Add(sale);
-                _dbContext.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Se produjo un error al guardar la venta: " + ex.Message);
-            }
+             _dbContext.Sale.Add(sale);
+             _dbContext.SaveChanges();
+
         }
     }
 }

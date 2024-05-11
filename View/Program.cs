@@ -1,4 +1,5 @@
-﻿using Application.Interface.ICommand;
+﻿using Aplicacion.IException;
+using Application.Interface.ICommand;
 using Application.Interface.IPrinter;
 using Application.Interface.IQuery;
 using Application.Interface.IService;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Presentation.Menu;
 using Presentation.Printers;
+using View.Exception;
 
 
 class Program
@@ -27,8 +29,10 @@ class Program
                 services.AddTransient<ISaleRepository, SaleRepository>();
                 services.AddScoped<ISaleConsole, SaleConsole>();
                 services.AddScoped<IProductPrinter, ProductConsole>();
+                services.AddScoped<ISaleExceptionHandler, SaleExceptionHandler>();
                 services.AddScoped<ProductController>();
                 services.AddScoped<SaleController>();
+
                 services.AddScoped<Menu>();
             });
 

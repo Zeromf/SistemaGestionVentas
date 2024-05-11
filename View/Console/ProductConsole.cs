@@ -48,5 +48,42 @@ namespace Presentation.Printers
                 Console.WriteLine($"Error al imprimir el producto: {ex.Message}");
             }
         }
+
+        public void ProductSelectionConfirmation(Product product, Guid productId, List<(Guid productId, int quantity)> productIdQuantities)
+        {
+            Console.Write($"\nProducto seleccionado: {product.Name}, Precio: {product.Price} Descuento: {product.Discount}% \nIngrese la cantidad: ");
+
+            if (int.TryParse(Console.ReadLine(), out int quantity) && quantity > 0)
+            {
+                Console.WriteLine($"\nProducto agregado: {product.Name} ({quantity} unidades)\n");
+                productIdQuantities.Add((productId, quantity));
+            }
+            else
+            {
+                Console.WriteLine("La cantidad debe ser un número entero positivo.");
+            }
+        }
+
+        public void ProductInvalid()
+        {
+            Console.WriteLine("El producto seleccionado no es válido.");
+        }
+
+        public string EnterProductId()
+        {
+            Console.WriteLine("\nIngrese el ID del producto (N para terminar): ");
+            return Console.ReadLine();
+
+        }
+
+        public void ConsoleClear() {
+            Console.Clear();
+        }
+
+        public bool ShouldExit(string input)
+        {
+            return input.ToUpper() == "N";
+        }
+
     }
 }

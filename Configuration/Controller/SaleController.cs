@@ -8,12 +8,15 @@ namespace Infraestructure.Controller
     {
         private readonly ISaleService _saleService;
         private readonly ISaleConsole _saleConsole;
+        private readonly IProductPrinter _productConsole;
+
         private readonly IProductService _productService;
 
-        public SaleController(ISaleService saleService, ISaleConsole saleConsole, IProductService productService)
+        public SaleController(ISaleService saleService, ISaleConsole saleConsole, IProductService productService, IProductPrinter productConsole)
         {
             _saleService = saleService;
             _saleConsole = saleConsole;
+            _productConsole = productConsole;
             _productService = productService;
         }
 
@@ -23,38 +26,26 @@ namespace Infraestructure.Controller
 
             if (productIdsAndQuantities.Count == 0)
             {
-                Console.WriteLine("La venta no contiene ningún producto.");
-                Console.WriteLine("\nVolviendo al menú...");
+                _saleConsole.SaleNotProduct();
                 return;
             }
 
             var sale = _saleService.CalculateSale(productIdsAndQuantities);
             _saleConsole.SaleDetail(sale);
 
-            if (ConfirmSaleRegistration())
+            bool saleRegistration = _saleConsole.ConfirmSaleRegistration();
+
+            if (saleRegistration)
             {
-                if (_saleService.GenerateSale(productIdsAndQuantities))
-                {
-                    Console.WriteLine("\nVenta registrada e impresa exitosamente.\n");
-                }
-                else
-                {
-                    Console.WriteLine("Error al registrar o imprimir la venta. Consulte el log de errores para más detalles.");
-                }
+                bool generateSale = _saleService.GenerateSale(productIdsAndQuantities);
+                _saleConsole.SalesConfirm(generateSale);
             }
-            else
-            {
-                Console.WriteLine("Venta cancelada.");
+            else {
+               return; 
             }
+ 
         }
 
-        private bool ConfirmSaleRegistration()
-        {
-            Console.Write("\n¿Desea registrar y luego imprimir la venta? (S/N): ");
-            string confirmation = Console.ReadLine().ToUpper();
-
-            return confirmation == "S";
-        }
 
         private List<(Guid productId, int quantity)> GetProductSelection()
         {
@@ -62,12 +53,12 @@ namespace Infraestructure.Controller
 
             while (true)
             {
-                Console.Write("\nIngrese el ID del producto (N para terminar): ");
-                string productIdInput = Console.ReadLine();
 
-                if (productIdInput.ToUpper() == "N")
+                string productIdInput = _productConsole.EnterProductId();
+
+                if (_productConsole.ShouldExit(productIdInput))
                 {
-                    Console.Clear();
+                    _productConsole.ConsoleClear();
                     break;
                 }
 
@@ -77,26 +68,12 @@ namespace Infraestructure.Controller
 
                     if (product != null)
                     {
-                        Console.Write($"\nProducto seleccionado: {product.Name}, Precio: {product.Price} Descuento: {product.Discount}% \nIngrese la cantidad: ");
-
-                        if (int.TryParse(Console.ReadLine(), out int quantity) && quantity > 0)
-                        {
-                            Console.WriteLine($"\nProducto agregado: {product.Name} ({quantity} unidades)\n");
-                            productIdQuantities.Add((productId, quantity));
-                        }
-                        else
-                        {
-                            Console.WriteLine("La cantidad debe ser un número entero positivo.");
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("ID de producto no válido.");
+                        _productConsole.ProductSelectionConfirmation(product,productId,productIdQuantities);
                     }
                 }
                 else
                 {
-                    Console.WriteLine("ID de producto no válido.");
+                    _productConsole.ProductInvalid();
                 }
             }
             return productIdQuantities;

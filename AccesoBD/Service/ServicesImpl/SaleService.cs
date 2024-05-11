@@ -1,4 +1,5 @@
-﻿using Application.Interface.ICommand;
+﻿using Aplicacion.IException;
+using Application.Interface.ICommand;
 using Application.Interface.IPrinter;
 using Application.Interface.IService;
 using SistemaGestionVentas.Const;
@@ -13,12 +14,14 @@ namespace Application.Service
         private readonly ISaleRepository _saleRepository;
         private readonly IProductService _product;
         private readonly ISaleConsole _salePrinter;
+        private readonly ISaleExceptionHandler _saleExceptionHandler;
 
-        public SaleService(ISaleRepository saleRepository, IProductService product, ISaleConsole printer)
+        public SaleService(ISaleRepository saleRepository, IProductService product, ISaleConsole printer, ISaleExceptionHandler saleExceptionHandler)
         {
             _saleRepository = saleRepository;
             _product = product;
             _salePrinter = printer;
+            _saleExceptionHandler = saleExceptionHandler;
         }
         public bool GenerateSale(List<(Guid productId, int quantity)> productIdsAndQuantities)
         {
@@ -32,8 +35,7 @@ namespace Application.Service
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al crear la venta: " + ex.Message);
-                return false;
+                return _saleExceptionHandler.HandleException(ex);
             }
         }
         public Sale CalculateSale(List<(Guid productId, int quantity)> productIdsAndQuantities)
