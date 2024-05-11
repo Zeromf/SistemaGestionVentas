@@ -40,10 +40,11 @@ namespace Infraestructure.Controller
                 bool generateSale = _saleService.GenerateSale(productIdsAndQuantities);
                 _saleConsole.SalesConfirm(generateSale);
             }
-            else {
-               return; 
+            else
+            {
+                return;
             }
- 
+
         }
 
 
@@ -68,7 +69,7 @@ namespace Infraestructure.Controller
 
                     if (product != null)
                     {
-                        _productConsole.ProductSelectionConfirmation(product,productId,productIdQuantities);
+                        _productConsole.ProductSelectionConfirmation(product, productId, productIdQuantities);
                     }
                 }
                 else

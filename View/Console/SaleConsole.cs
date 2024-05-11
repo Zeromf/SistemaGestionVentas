@@ -1,6 +1,5 @@
 ﻿using Application.Interface.IPrinter;
 using SistemaGestionVentasTP1.Model;
-using System.Reflection.Metadata.Ecma335;
 
 
 namespace Presentation.Printers
@@ -13,7 +12,7 @@ namespace Presentation.Printers
             {
                 Console.WriteLine("\n----- Imprimiendo Venta -----\n");
                 Console.WriteLine($"Fecha de la venta: {sale.Date}");
-                
+
                 Console.WriteLine("Productos:");
                 foreach (var saleProduct in sale.SaleProduct)
                 {
@@ -59,14 +58,17 @@ namespace Presentation.Printers
                 saleRegistrarion = true;
                 return saleRegistrarion;
             }
-            else {
+            else
+            {
                 Console.WriteLine("Venta cancelada.");
                 return saleRegistrarion;
             }
         }
 
-        public void SalesConfirm(bool generateSales) {
-            if (generateSales) {
+        public void SalesConfirm(bool generateSales)
+        {
+            if (generateSales)
+            {
                 Console.WriteLine("\nVenta registrada e impresa exitosamente.\n");
             }
             else
@@ -76,11 +78,12 @@ namespace Presentation.Printers
 
         }
 
-        public void SaleNotProduct() {
+        public void SaleNotProduct()
+        {
             Console.WriteLine("La venta no contiene ningún producto.");
             Console.WriteLine("\nVolviendo al menú...");
         }
-     
+
 
     }
 }

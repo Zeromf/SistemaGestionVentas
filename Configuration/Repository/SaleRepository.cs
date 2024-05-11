@@ -16,8 +16,8 @@ namespace Infraestructure.Command
 
         public void AddSale(Sale sale)
         {
-             _dbContext.Sale.Add(sale);
-             _dbContext.SaveChanges();
+            _dbContext.Sale.Add(sale);
+            _dbContext.SaveChanges();
 
         }
     }

@@ -76,7 +76,8 @@ namespace Presentation.Printers
 
         }
 
-        public void ConsoleClear() {
+        public void ConsoleClear()
+        {
             Console.Clear();
         }
 

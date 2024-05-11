@@ -1,6 +1,4 @@
 ﻿using SistemaGestionVentasTP1.Model;
-using System.Collections.Generic;
-using System;
 
 namespace Application.Interface.IPrinter
 {
