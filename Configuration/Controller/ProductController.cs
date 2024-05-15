@@ -8,13 +8,13 @@ namespace Infraestructure.Controller
     public class ProductController
     {
         private readonly IProductService _productService;
-        private readonly IProductPrinter _productPrinter;
+        private readonly IProductConsole _productConsole;
         private readonly ISaleExceptionHandler _saleExceptionHandler;
 
-        public ProductController(IProductService productService, IProductPrinter productPrinter, ISaleExceptionHandler saleExceptionHandler)
+        public ProductController(IProductService productService, IProductConsole productPrinter, ISaleExceptionHandler saleExceptionHandler)
         {
             _productService = productService;
-            _productPrinter = productPrinter;
+            _productConsole = productPrinter;
             _saleExceptionHandler = saleExceptionHandler;
         }
 
@@ -25,7 +25,7 @@ namespace Infraestructure.Controller
                 var products = _productService.ListProducts();
                 if (products != null)
                 {
-                    _productPrinter.ListProductDetail(products);
+                    _productConsole.ListProductDetail(products);
                 }
             }
             catch (Exception ex)

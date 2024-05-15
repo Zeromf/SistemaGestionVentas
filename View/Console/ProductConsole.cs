@@ -4,7 +4,7 @@ using SistemaGestionVentasTP1.Model;
 
 namespace Presentation.Printers
 {
-    public class ProductConsole : IProductPrinter
+    public class ProductConsole : IProductConsole
     {
         public void ListProductDetail(List<Product> products)
         {

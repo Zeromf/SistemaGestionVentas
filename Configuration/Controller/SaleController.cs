@@ -8,11 +8,11 @@ namespace Infraestructure.Controller
     {
         private readonly ISaleService _saleService;
         private readonly ISaleConsole _saleConsole;
-        private readonly IProductPrinter _productConsole;
+        private readonly IProductConsole _productConsole;
 
         private readonly IProductService _productService;
 
-        public SaleController(ISaleService saleService, ISaleConsole saleConsole, IProductService productService, IProductPrinter productConsole)
+        public SaleController(ISaleService saleService, ISaleConsole saleConsole, IProductService productService, IProductConsole productConsole)
         {
             _saleService = saleService;
             _saleConsole = saleConsole;
@@ -32,6 +32,7 @@ namespace Infraestructure.Controller
 
             var sale = _saleService.CalculateSale(productIdsAndQuantities);
             _saleConsole.SaleDetail(sale);
+
 
             bool saleRegistration = _saleConsole.ConfirmSaleRegistration();
 

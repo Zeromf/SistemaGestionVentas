@@ -28,7 +28,7 @@ class Program
                 services.AddTransient<ISaleService, SaleService>();
                 services.AddTransient<ISaleRepository, SaleRepository>();
                 services.AddScoped<ISaleConsole, SaleConsole>();
-                services.AddScoped<IProductPrinter, ProductConsole>();
+                services.AddScoped<IProductConsole, ProductConsole>();
                 services.AddScoped<ISaleExceptionHandler, SaleExceptionHandler>();
                 services.AddScoped<ProductController>();
                 services.AddScoped<SaleController>();

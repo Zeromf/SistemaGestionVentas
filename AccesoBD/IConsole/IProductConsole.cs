@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Application.Interface.IPrinter
 {
-    public interface IProductPrinter
+    public interface IProductConsole
     {
         public void ListProductDetail(List<Product> products);
         public void PrintProduct(Product product);
